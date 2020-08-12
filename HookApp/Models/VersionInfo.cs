@@ -5,7 +5,7 @@ using System.Net;
 
 namespace HookApp.Models
 {
-    static class VersionInfo
+    static class VersionInfoProperty
     {
         public static bool IsNoError { get; }
 
@@ -32,7 +32,7 @@ namespace HookApp.Models
         /// <summary>
         /// バージョン情報のプロパティを初期化します。
         /// </summary>
-        static VersionInfo()
+        static VersionInfoProperty()
         {
             // APIから最新バージョンを取得し、プロパティへ格納する
             //最新バージョンを返すAPIのURI
@@ -52,20 +52,20 @@ namespace HookApp.Models
             if(versionInfo == null)
             {
                 //取得失敗時
-                VersionInfo.IsNoError = false;
-                VersionInfo.ID = 0;
-                VersionInfo.major = 0;
-                VersionInfo.minor = 0;
-                VersionInfo.revision = null;
+                VersionInfoProperty.IsNoError = false;
+                VersionInfoProperty.ID = 0;
+                VersionInfoProperty.major = 0;
+                VersionInfoProperty.minor = 0;
+                VersionInfoProperty.revision = null;
             }
             else
             {
                 //取得成功時
-                VersionInfo.IsNoError = true;
-                VersionInfo.ID = versionInfo.id;
-                VersionInfo.major = versionInfo.major;
-                VersionInfo.minor = versionInfo.minor;
-                VersionInfo.revision = versionInfo.revision;
+                VersionInfoProperty.IsNoError = true;
+                VersionInfoProperty.ID = versionInfo.id;
+                VersionInfoProperty.major = versionInfo.major;
+                VersionInfoProperty.minor = versionInfo.minor;
+                VersionInfoProperty.revision = versionInfo.revision;
             }
         }
 
@@ -85,15 +85,15 @@ namespace HookApp.Models
             {
                 string versionStr = null;
                 //バージョンチェック
-                if (Setting.Default.APP_VERSION_ID == VersionInfo.ID)
+                if (Setting.Default.APP_VERSION_ID == VersionInfoProperty.ID)
                 {
                     //実行中のアプリは最新
                     //取得したバージョン情報をそのまま使用する
-                    versionStr = VersionInfo.major.ToString() + "." + VersionInfo.minor.ToString();
-                    if (!String.IsNullOrEmpty(VersionInfo.revision))
+                    versionStr = VersionInfoProperty.major.ToString() + "." + VersionInfoProperty.minor.ToString();
+                    if (!String.IsNullOrEmpty(VersionInfoProperty.revision))
                     {
                         //リビジョン文字列が存在する場合は追加する
-                        versionStr += " " + VersionInfo.revision;
+                        versionStr += " " + VersionInfoProperty.revision;
                     }
 
                     //最新バージョンであることを表示する

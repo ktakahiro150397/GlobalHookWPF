@@ -62,12 +62,12 @@ namespace HookApp {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("HookApp")]
-        public string TITLE_STRING {
+        public string APP_NAME {
             get {
-                return ((string)(this["TITLE_STRING"]));
+                return ((string)(this["APP_NAME"]));
             }
             set {
-                this["TITLE_STRING"] = value;
+                this["APP_NAME"] = value;
             }
         }
         

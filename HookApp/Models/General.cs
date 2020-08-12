@@ -13,7 +13,7 @@ namespace HookApp.Models
         /// <returns></returns>
         public static string GetTitleString()
         {
-            return Setting.Default.TITLE_STRING + "    " + Setting.Default.TITLE_VERSION_PREFIX + VersionInfo.GetVersionString();
+            return Setting.Default.APP_NAME + "    " + Setting.Default.TITLE_VERSION_PREFIX + VersionInfoProperty.GetVersionString();
         }
 
        

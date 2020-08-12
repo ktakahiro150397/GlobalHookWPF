@@ -11,7 +11,7 @@
     <Setting Name="KEYHISTORY_SPACE_SYMBOL" Type="System.String" Scope="User">
       <Value Profile="(Default)">[ ]</Value>
     </Setting>
-    <Setting Name="TITLE_STRING" Type="System.String" Scope="User">
+    <Setting Name="APP_NAME" Type="System.String" Scope="User">
       <Value Profile="(Default)">HookApp</Value>
     </Setting>
     <Setting Name="API_ENDPOINT" Type="System.String" Scope="User">

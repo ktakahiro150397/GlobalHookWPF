@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HookApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,19 @@ namespace HookApp.Views
         public VersionInfo()
         {
             InitializeComponent();
+
+            //バージョン情報テキストの表示
+            if (VersionInfoProperty.IsNoError)
+            {
+                txtVersionInfo.Text = Setting.Default.APP_NAME + "    " + VersionInfoProperty.GetVersionString();
+
+            }
+            else
+            {
+                txtVersionInfo.Text = "バージョンの取得に失敗しました。";
+            }
+
+
         }
     }
 }
