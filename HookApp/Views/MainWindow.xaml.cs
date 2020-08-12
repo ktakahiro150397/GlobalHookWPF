@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HookApp.ViewModels;
+using HookApp.Views;
 
 namespace HookApp
 {
@@ -71,8 +72,8 @@ namespace HookApp
         /// <param name="e"></param>
         private void VersionInfo_Click(object sender, RoutedEventArgs e)
         {
-            //var versionInfo = new VersionInfoWindow();
-            //versionInfo.Show();
+            var versionInfo = new VersionInfo();
+            versionInfo.Show();
         }
     }
 }

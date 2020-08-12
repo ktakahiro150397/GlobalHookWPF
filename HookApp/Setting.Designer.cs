@@ -61,7 +61,7 @@ namespace HookApp {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("キー入力履歴取得App")]
+        [global::System.Configuration.DefaultSettingValueAttribute("HookApp")]
         public string TITLE_STRING {
             get {
                 return ((string)(this["TITLE_STRING"]));

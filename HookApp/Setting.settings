@@ -12,7 +12,7 @@
       <Value Profile="(Default)">[ ]</Value>
     </Setting>
     <Setting Name="TITLE_STRING" Type="System.String" Scope="User">
-      <Value Profile="(Default)">キー入力履歴取得App</Value>
+      <Value Profile="(Default)">HookApp</Value>
     </Setting>
     <Setting Name="API_ENDPOINT" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://globalhookapi.azurewebsites.net</Value>
