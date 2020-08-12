@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+	  <StartupObject>HookApp.StartUpProgram</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Setting.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Setting.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Setting.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Setting.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HookApp" GeneratedClassName="Setting">
+  <Profiles />
+  <Settings>
+    <Setting Name="KEYHISTORY_SEPARATOR" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_</Value>
+    </Setting>
+    <Setting Name="KEYHISTORY_RETURN_SYMBOL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">⏎</Value>
+    </Setting>
+    <Setting Name="KEYHISTORY_SPACE_SYMBOL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[ ]</Value>
+    </Setting>
+    <Setting Name="TITLE_STRING" Type="System.String" Scope="User">
+      <Value Profile="(Default)">キー入力履歴取得App</Value>
+    </Setting>
+    <Setting Name="API_ENDPOINT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://globalhookapi.azurewebsites.net</Value>
+    </Setting>
+    <Setting Name="API_GET_LATEST_VER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/api/Hook/LatestVersion</Value>
+    </Setting>
+    <Setting Name="TITLE_VERSION_PREFIX" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ver : </Value>
+    </Setting>
+    <Setting Name="APP_VERSION_ID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">11</Value>
+    </Setting>
+    <Setting Name="TITLE_UPDATE_EXIST" Type="System.String" Scope="User">
+      <Value Profile="(Default)">【新バージョンが存在します】</Value>
+    </Setting>
+    <Setting Name="API_GET_VERSION_BY_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/api/Hook/GetVersion/</Value>
+    </Setting>
+    <Setting Name="TITLE_UPDATE_NONE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">【最新バージョンです】</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

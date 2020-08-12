@@ -1,0 +1,87 @@
+﻿<Window x:Class="HookApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HookApp"
+        mc:Ignorable="d"
+        Title="{Binding TitleString}" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.5*" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--画面上部のメニュー-->
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Top">
+            <MenuItem Header="メニュー">
+                <MenuItem Header="画面のクリア" Click="btnClear_Click" InputGestureText=""></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="ウィンドウを閉じる" InputGestureText=""></MenuItem>
+            </MenuItem>
+            <MenuItem Header="ヘルプ">
+                <MenuItem Header="バージョン情報" Click="VersionInfo_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <!--テキスト部分-->
+        <TextBox x:Name="inputHistory" 
+                 Grid.Row="1"
+                 Grid.Column="0"
+                 Grid.RowSpan="2" 
+                 Grid.ColumnSpan="1" 
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Visible"
+                 Background="#00a2e8"
+                 IsReadOnly="True"
+                 TextChanged="inputHistory_TextChanged"
+                 Text="{Binding inputHistory}"
+                 ></TextBox>
+
+        <!--グラフ表示部分-->
+        <Border x:Name="graphTempArea" 
+                Background="Aqua"
+                Grid.Row="1"
+                Grid.Column="2"
+                ></Border>
+        <!--<RichTextBox x:Name="inputHistoryRich"
+                     Grid.Row="1"
+                     Grid.Column="2"
+                     SelectionBrush="AliceBlue"
+                     >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="fixed"></Run>
+                    <Run Text="_changeStyle"
+                         Foreground="Red"
+                         ></Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>-->
+        <TextBlock x:Name="txtTempMsgGrapg"
+                   Text="グラフ表示予定領域"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   ></TextBlock>
+
+        <!--仮想キーボード表示部分-->
+        <Border x:Name="vkBoardTempArea" 
+                Background="Azure"
+                Grid.Row="2"
+                Grid.Column="2"
+                ></Border>
+        <TextBlock x:Name="txtTempMsgVKBoard"
+                   Text="仮想キーボード表示予定領域"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   ></TextBlock>
+
+    </Grid>
+</Window>
