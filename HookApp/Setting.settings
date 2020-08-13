@@ -24,7 +24,7 @@
       <Value Profile="(Default)">Ver : </Value>
     </Setting>
     <Setting Name="APP_VERSION_ID" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">11</Value>
+      <Value Profile="(Default)">12</Value>
     </Setting>
     <Setting Name="TITLE_UPDATE_EXIST" Type="System.String" Scope="User">
       <Value Profile="(Default)">【新バージョンが存在します】</Value>

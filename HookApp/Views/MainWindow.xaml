@@ -82,6 +82,10 @@
                    Grid.Row="2"
                    Grid.Column="2"
                    ></TextBlock>
+        <Canvas>
+            <Image x:Name="KeyboardOverAllImage"
+                   Source=""></Image>
+        </Canvas>
 
     </Grid>
 </Window>
