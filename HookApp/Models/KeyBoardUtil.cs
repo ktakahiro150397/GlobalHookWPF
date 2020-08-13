@@ -135,7 +135,6 @@ namespace HookApp.Models
         //プライベート変数群
         private int HookId = 0;
         private HookCallback CallbackFunc = null;
-        private MainWindowViewModel main;
 
         /// <summary>
         /// グローバルフック初期化
@@ -145,7 +144,6 @@ namespace HookApp.Models
         {
             this.IsShiftPress = false;
             this.CallbackFunc = KeyboardHookProc;
-            this.main = vm;
 
             //フックIDの取得
             this.HookId = SetWindowsHookEx(HookType.WH_KEYBOARD_LL,

@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HookApp"
         mc:Ignorable="d"
-        Title="{Binding TitleString}" Height="450" Width="800">
+        Title="{Binding TitleString}" Height="450" Width="1000">
     <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="0.5*"></RowDefinition>
-            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="1.0*"></RowDefinition>
+            <RowDefinition Height="210"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" ></ColumnDefinition>
-            <ColumnDefinition Width="0.5*" ></ColumnDefinition>
+            <ColumnDefinition Width="1.0*" ></ColumnDefinition>
+            <ColumnDefinition Width="562" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--画面上部のメニュー-->
@@ -82,9 +82,12 @@
                    Grid.Row="2"
                    Grid.Column="2"
                    ></TextBlock>
-        <Canvas>
+        <Canvas Grid.Row="2"
+                Grid.Column="2">
             <Image x:Name="KeyboardOverAllImage"
-                   Source=""></Image>
+                   Source="../Resources/main.png"
+                   Canvas.Left="0"
+                   Canvas.Top="0"></Image>
         </Canvas>
 
     </Grid>

@@ -53,6 +53,11 @@ namespace HookApp.ViewModels
         /// </summary>
         private Models.KeyboardUtil KeyboardUtil { get; }
 
+        /// <summary>
+        /// キーボード表示を行うクラスインスタンス。
+        /// </summary>
+        private Models.KeyBoardDisplay KeyboardDisplay { get; }
+
         private bool IsShiftPressed { get; set; }
 
         /// <summary>
@@ -66,6 +71,9 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookKeyDown += this.KeyHookKeyDown_Handler;
             this.KeyboardUtil.KeyHookShiftKeyUp += this.KeyHookShiftKeyUp_Handler;
             this.KeyboardUtil.KeyHookShiftKeyDown += this.KeyHookShiftKeyDown_Handler;
+
+            //キーボード表示クラスのインスタンスを生成・イベントハンドラーの設定
+            this.KeyboardDisplay = new Models.KeyBoardDisplay();
 
             //最初の入力にセパレータは不要
             this.IsInsertSeparatorSymbol = false;
