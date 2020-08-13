@@ -5,7 +5,7 @@ using System.Net;
 
 namespace HookApp.Models
 {
-    static class VersionInfoProperty
+    public static class VersionInfoProperty
     {
         public static bool IsNoError { get; }
 
