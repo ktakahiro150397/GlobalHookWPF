@@ -239,7 +239,7 @@ namespace HookApp.Models
                     }
                     else
                     {
-                        //一般キーダウンイベントを発生
+                        //一般キーアップイベントを発生
                         KeyHookKeyUp(this, e);
                     }
                     break;
@@ -391,7 +391,7 @@ namespace HookApp.Models
             Colon = 0xBA,
             SemiColon = 0xBB,
             Comma = 0xBC,
-            hyphen = 0xBD,
+            Hyphen = 0xBD,
             Period = 0xBE,
             Slash = 0xBF,
             AMark = 0xC0,
@@ -540,7 +540,7 @@ namespace HookApp.Models
                 {VirtualKeyCode.Colon               ,":" },
                 {VirtualKeyCode.SemiColon           ,";" },
                 {VirtualKeyCode.Comma               ,"," },
-                {VirtualKeyCode.hyphen              ,"-" },
+                {VirtualKeyCode.Hyphen              ,"-" },
                 {VirtualKeyCode.Period              ,"." },
                 {VirtualKeyCode.Slash               ,"/" },
                 {VirtualKeyCode.AMark               ,"@" },
@@ -680,7 +680,7 @@ namespace HookApp.Models
                 {VirtualKeyCode.Colon               ,"*" },
                 {VirtualKeyCode.SemiColon           ,"+" },
                 {VirtualKeyCode.Comma               ,"<" },
-                {VirtualKeyCode.hyphen              ,"=" },
+                {VirtualKeyCode.Hyphen              ,"=" },
                 {VirtualKeyCode.Period              ,">" },
                 {VirtualKeyCode.Slash               ,"?" },
                 {VirtualKeyCode.AMark               ,"`" },

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
+using System.Windows;
 using HookApp.Models;
 
 namespace HookApp.ViewModels
@@ -27,6 +30,9 @@ namespace HookApp.ViewModels
         /// </summary>
         public bool IsInsertSeparatorSymbol;
 
+
+        #region "通知プロパティ"
+
         /// <summary>
         /// キー入力の履歴文字列プロパティ。変更時、Viewへ通知されます。
         /// </summary>
@@ -42,6 +48,10 @@ namespace HookApp.ViewModels
                 this.OnPropertyChanged(nameof(inputHistory));
             }
         }
+
+        #endregion
+
+        public ObservableCollection<KeyBoardDisplay.KeyDisplayInfo> KeyDisplayInfoCollection { get; set; }
 
         /// <summary>
         /// タイトル文字列プロパティ。
@@ -72,8 +82,9 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookShiftKeyUp += this.KeyHookShiftKeyUp_Handler;
             this.KeyboardUtil.KeyHookShiftKeyDown += this.KeyHookShiftKeyDown_Handler;
 
-            //キーボード表示クラスのインスタンスを生成・イベントハンドラーの設定
-            this.KeyboardDisplay = new Models.KeyBoardDisplay();
+            //キーボード入力表示クラスのインスタンスを生成・プロパティの割当
+            this.KeyboardDisplay = new KeyBoardDisplay();
+            KeyDisplayInfoCollection = KeyboardDisplay.KeyDisplayInfoCollection;
 
             //最初の入力にセパレータは不要
             this.IsInsertSeparatorSymbol = false;
@@ -96,22 +107,32 @@ namespace HookApp.ViewModels
         }
 
         /// <summary>
-        /// キーダウンイベントハンドラ
+        /// キーアップイベントハンドラ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void KeyHookKeyUp_Handler(object sender, KeyboardUtil.HookKeyEventArgs e)
         {
-            //キーダウン時は何もしない
+            //このキーコードをアンプッシュ状態にする
+            var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
+            if (keyDisp == null)
+            {
+                //キーコードが存在しない場合何もしない
+            }
+            else
+            {
+                //このキーのオーバーレイを非表示にする
+                keyDisp.Visible = Visibility.Hidden;
+            }
         }
 
         /// <summary>
-        /// キーアップイベントハンドラ
+        /// キーダウンイベントハンドラ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void KeyHookKeyDown_Handler(object sender, KeyboardUtil.HookKeyEventArgs e)
-        {
+        {       
             string inputChar = null;
             //入力文字を取得する
             if (this.IsShiftPressed)
@@ -129,6 +150,30 @@ namespace HookApp.ViewModels
             {
                 //入力文字が取得できなかった場合
                 return;
+            }
+
+            //このキーコードをプッシュ状態にする
+            
+            var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
+            if(keyDisp == null)
+            {
+                //キーコードが存在しない場合何もしない
+            }
+            else
+            {
+                //特殊キー
+                //全角/半角キー
+
+                //ひらがな/かたかな
+
+                //RightWin検証不可
+
+                //Appキー検証不可
+
+                
+
+                //このキーのオーバーレイを表示する
+               keyDisp.Visible = Visibility.Visible;
             }
 
             //テキストに入力を反映する
@@ -178,6 +223,17 @@ namespace HookApp.ViewModels
         private void KeyHookShiftKeyUp_Handler(object sender, Models.KeyboardUtil.HookKeyEventArgs e)
         {
             this.IsShiftPressed = false;
+
+            var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
+            if (keyDisp == null)
+            {
+                //キーコードが存在しない場合何もしない
+            }
+            else
+            {
+                //このキーのオーバーレイを非表示にする
+                keyDisp.Visible = Visibility.Hidden;
+            }
         }
 
         /// <summary>
@@ -188,6 +244,17 @@ namespace HookApp.ViewModels
         private void KeyHookShiftKeyDown_Handler(object sender, Models.KeyboardUtil.HookKeyEventArgs e)
         {
             this.IsShiftPressed = true;
+
+            var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
+            if (keyDisp == null)
+            {
+                //キーコードが存在しない場合何もしない
+            }
+            else
+            {
+                //このキーのオーバーレイを表示する
+                keyDisp.Visible = Visibility.Visible;
+            }
         }
 
     }

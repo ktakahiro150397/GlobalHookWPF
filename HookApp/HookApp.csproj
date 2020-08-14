@@ -16,36 +16,44 @@
     <None Remove="Resources\06.png" />
     <None Remove="Resources\07.png" />
     <None Remove="Resources\08.png" />
+    <None Remove="Resources\Caps.png" />
+    <None Remove="Resources\Enter.png" />
+    <None Remove="Resources\Esc.png" />
+    <None Remove="Resources\LeftShiftSpace.png" />
     <None Remove="Resources\main.png" />
+    <None Remove="Resources\NormalKey.png" />
+    <None Remove="Resources\RightShift.png" />
+    <None Remove="Resources\SystemKey.png" />
+    <None Remove="Resources\Tab.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\01.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Resources\Caps.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\02.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Resources\Enter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\03.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Resources\Esc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\04.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\05.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\06.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\07.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\08.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="Resources\LeftShiftSpace.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\main.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\NormalKey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\RightShift.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SystemKey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Tab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

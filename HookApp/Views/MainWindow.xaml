@@ -11,11 +11,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="1.0*"></RowDefinition>
-            <RowDefinition Height="210"></RowDefinition>
+            <RowDefinition Height="197"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.0*" ></ColumnDefinition>
-            <ColumnDefinition Width="562" ></ColumnDefinition>
+            <ColumnDefinition Width="528" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--画面上部のメニュー-->
@@ -51,6 +51,13 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 ></Border>
+        <TextBlock x:Name="txtBox2"
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 Width="100"
+                 Height="100"
+                 Text="{Binding Escape}"
+                 ></TextBlock>
         <!--<RichTextBox x:Name="inputHistoryRich"
                      Grid.Row="1"
                      Grid.Column="2"
@@ -72,7 +79,7 @@
                    ></TextBlock>
 
         <!--仮想キーボード表示部分-->
-        <Border x:Name="vkBoardTempArea" 
+        <!--<Border x:Name="vkBoardTempArea" 
                 Background="Azure"
                 Grid.Row="2"
                 Grid.Column="2"
@@ -81,14 +88,55 @@
                    Text="仮想キーボード表示予定領域"
                    Grid.Row="2"
                    Grid.Column="2"
-                   ></TextBlock>
-        <Canvas Grid.Row="2"
-                Grid.Column="2">
-            <Image x:Name="KeyboardOverAllImage"
-                   Source="../Resources/main.png"
-                   Canvas.Left="0"
-                   Canvas.Top="0"></Image>
-        </Canvas>
+                   ></TextBlock>-->
+
+
+
+        <!--<Canvas Grid.Row="2"
+                Grid.Column="2"
+                x:Name="KeyBoardDisplayCanvas">-->
+
+        <Image x:Name="KeyboardOverAllImage"
+                Source="../Resources/main.png"
+                Grid.Row="2"
+                Grid.Column="2"
+                Canvas.Left="0"
+                Canvas.Top="0"
+                Height="197"
+                Width="528"
+                Panel.ZIndex="-1"></Image>
+
+        <ItemsControl ItemsSource="{Binding Path=KeyDisplayInfoCollection}"
+                      x:Name="itemControlTest"
+                      Grid.Row="2"
+                      Grid.Column="2">
+            <!--Template:コントロール全体の設定-->
+            <!--ItemsPanel:要素の並べ方を指定する-->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Canvas>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <!--ItemTemplate:コレクション項目の表示設定(repeaterと同一か?)-->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+
+                    <Image Source="{Binding PicUri}"
+                           Visibility="{Binding Visible}"
+                           Height="{Binding Height}"
+                           Width="{Binding Width}"
+                           ></Image>
+                   
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <!--ItemContainerStyle:要素ごとの表示方法を指定する(CSSと同一)-->
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Top" Value="{Binding Path=Top}"></Setter>
+                    <Setter Property="Canvas.Left" Value="{Binding Path=Left}"></Setter>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
 
     </Grid>
 </Window>

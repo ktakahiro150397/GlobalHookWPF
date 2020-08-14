@@ -37,7 +37,6 @@ namespace HookApp
                 this._vm = new MainWindowViewModel();
                 this.DataContext = _vm;
             }
-
         }
 
         /// <summary>
