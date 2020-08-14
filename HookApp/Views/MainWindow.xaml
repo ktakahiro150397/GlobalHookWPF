@@ -58,43 +58,12 @@
                  Height="100"
                  Text="{Binding Escape}"
                  ></TextBlock>
-        <!--<RichTextBox x:Name="inputHistoryRich"
-                     Grid.Row="1"
-                     Grid.Column="2"
-                     SelectionBrush="AliceBlue"
-                     >
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="fixed"></Run>
-                    <Run Text="_changeStyle"
-                         Foreground="Red"
-                         ></Run>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>-->
+        
         <TextBlock x:Name="txtTempMsgGrapg"
                    Text="グラフ表示予定領域"
                    Grid.Row="1"
                    Grid.Column="2"
                    ></TextBlock>
-
-        <!--仮想キーボード表示部分-->
-        <!--<Border x:Name="vkBoardTempArea" 
-                Background="Azure"
-                Grid.Row="2"
-                Grid.Column="2"
-                ></Border>
-        <TextBlock x:Name="txtTempMsgVKBoard"
-                   Text="仮想キーボード表示予定領域"
-                   Grid.Row="2"
-                   Grid.Column="2"
-                   ></TextBlock>-->
-
-
-
-        <!--<Canvas Grid.Row="2"
-                Grid.Column="2"
-                x:Name="KeyBoardDisplayCanvas">-->
 
         <Image x:Name="KeyboardOverAllImage"
                 Source="../Resources/main.png"

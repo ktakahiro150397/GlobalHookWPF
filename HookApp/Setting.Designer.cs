@@ -109,7 +109,7 @@ namespace HookApp {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
         public int APP_VERSION_ID {
             get {
                 return ((int)(this["APP_VERSION_ID"]));
