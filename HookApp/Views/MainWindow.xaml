@@ -45,26 +45,78 @@
                  Text="{Binding inputHistory}"
                  ></TextBox>
 
+
         <!--グラフ表示部分-->
         <Border x:Name="graphTempArea" 
                 Background="Aqua"
                 Grid.Row="1"
                 Grid.Column="2"
+                Panel.ZIndex="-1"
                 ></Border>
-        <TextBlock x:Name="txtBox2"
-                 Grid.Row="1"
-                 Grid.Column="2"
-                 Width="100"
-                 Height="100"
-                 Text="{Binding Escape}"
-                 ></TextBlock>
+        <Grid x:Name="innerGrid" 
+              Grid.Row="1"
+              Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="txtCurrentKPMDesc"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Text="現在KPM  :  "
+                   ></TextBlock>
+            <TextBlock x:Name="txtCurrentKPM"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Text="{Binding CurrentKPM}"
+                   Margin="70,0,0,0"
+                   ></TextBlock>
+
+            <TextBlock x:Name="txtMaxKPMDesc"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Text="最高KPM  :  "
+                   ></TextBlock>
+            <TextBlock x:Name="txtMaxKPM"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Text="{Binding MaxKPM}"
+                   Margin="70,0,0,0"
+                   ></TextBlock>
+
+            <TextBlock x:Name="txtKeyDownSumDesc"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Text="総打鍵数  :  "
+                   ></TextBlock>
+            <TextBlock x:Name="txtKeyDownSum"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Text="{Binding KeyDownSum}"
+                   Margin="70,0,0,0"
+                   ></TextBlock>
+
+            <TextBlock x:Name="txtElapsedTime"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Text="{Binding ElapsedTime}"
+                   ></TextBlock>
+
+        </Grid>
+
         
-        <TextBlock x:Name="txtTempMsgGrapg"
+
+        <!--<TextBlock x:Name="txtTempMsgGrapg"
                    Text="グラフ表示予定領域"
                    Grid.Row="1"
                    Grid.Column="2"
-                   ></TextBlock>
-
+                   ></TextBlock>-->
+        
+        
+        <!--キーボード入力表示部分-->
         <Image x:Name="KeyboardOverAllImage"
                 Source="../Resources/main.png"
                 Grid.Row="2"

@@ -65,6 +65,9 @@ namespace HookApp.Models
         /// </summary>
         public event EventHandler<HookKeyEventArgs> KeyHookShiftKeyUp;
 
+        public event EventHandler<HookKeyEventArgs> KeyHookAltKeyDown;
+        public event EventHandler<HookKeyEventArgs> KeyHookAltKeyUp;
+
         //デリゲート・列挙体定義
 
         /// <summary>
@@ -210,42 +213,56 @@ namespace HookApp.Models
 
             HookKeyEventArgs e = new HookKeyEventArgs(procEvent, kbStruct, inputCode);
 
-            switch (procEvent)
+            if(inputCode == KeyboardUtilConstants.VirtualKeyCode.CapsLock ||
+               inputCode == KeyboardUtilConstants.VirtualKeyCode.HiraganaKatakana)
             {
-                case KeyEvents.KeyDown:
-                    if (inputCode == KeyboardUtilConstants.VirtualKeyCode.Shift ||
-                       inputCode == KeyboardUtilConstants.VirtualKeyCode.LeftShift ||
-                       inputCode == KeyboardUtilConstants.VirtualKeyCode.RightShift
-                        )
-                    {
-                        //シフトキーダウンイベントを発生
-                        KeyHookShiftKeyDown(this, e);
-                    }
-                    else
-                    {
-                        //一般キーダウンイベントを発生
-                        KeyHookKeyDown(this, e);
-                    }
-                    break;
-
-                case KeyEvents.KeyUp:
-                    if (inputCode == KeyboardUtilConstants.VirtualKeyCode.Shift ||
-                       inputCode == KeyboardUtilConstants.VirtualKeyCode.LeftShift ||
-                       inputCode == KeyboardUtilConstants.VirtualKeyCode.RightShift
-                        )
-                    {
-                        //シフトキーダウンイベントを発生
-                        KeyHookShiftKeyUp(this, e);
-                    }
-                    else
-                    {
-                        //一般キーアップイベントを発生
-                        KeyHookKeyUp(this, e);
-                    }
-                    break;
-
-
+                //CapsLock・ひらがなかたかなは処理しない
             }
+            else
+            {
+                switch (procEvent)
+                {
+                    case KeyEvents.KeyDown:
+                        if (inputCode == KeyboardUtilConstants.VirtualKeyCode.Shift ||
+                           inputCode == KeyboardUtilConstants.VirtualKeyCode.LeftShift ||
+                           inputCode == KeyboardUtilConstants.VirtualKeyCode.RightShift
+                            )
+                        {
+                            //シフトキーダウンイベントを発生
+                            KeyHookShiftKeyDown(this, e);
+                        }
+                        else
+                        {
+                            //一般キーダウンイベントを発生
+                            KeyHookKeyDown(this, e);
+                        }
+                        break;
+                    case KeyEvents.SKeyDown:
+                        //Altキーダウンイベント発生
+                        KeyHookAltKeyDown(this, e);
+                        break;
+                    case KeyEvents.KeyUp:
+                        if (inputCode == KeyboardUtilConstants.VirtualKeyCode.Shift ||
+                           inputCode == KeyboardUtilConstants.VirtualKeyCode.LeftShift ||
+                           inputCode == KeyboardUtilConstants.VirtualKeyCode.RightShift
+                            )
+                        {
+                            //シフトキーダウンイベントを発生
+                            KeyHookShiftKeyUp(this, e);
+                        }
+                        else
+                        {
+                            //一般キーアップイベントを発生
+                            KeyHookKeyUp(this, e);
+                        }
+                        break;
+                    case KeyEvents.SKeyUp:
+                        KeyHookAltKeyUp(this, e);
+                        break;
+                }
+            }
+
+            
 
             //フック処理の終了
             return CallNextHookEx(HookId, Code, W, L);

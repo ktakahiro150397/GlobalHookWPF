@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using HookApp.Models;
+using HookApp.Lib;
 
 namespace HookApp.ViewModels
 {
@@ -15,21 +16,53 @@ namespace HookApp.ViewModels
     class MainWindowViewModel : INotifyPropertyChanged
     {
 
-        /// <summary>
-        /// プロパティ変更をUI側へ通知するイベント
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        #region "privateフィールド"
 
         /// <summary>
         /// 画面に表示するキー入力履歴文字列。
         /// </summary>
         private string _inputHistory;
 
-        /// <summary>
-        /// キー入力取得時、この文字にセパレータを挿入するかどうかのフラグ。
-        /// </summary>
-        public bool IsInsertSeparatorSymbol;
+        #endregion
 
+        #region "IPropertyChanged"
+
+        /// <summary>
+        /// プロパティ変更をUI側へ通知するイベント
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// プロパティ変更の通知メソッド。
+        /// </summary>
+        /// <param name="info"></param>
+        protected void OnPropertyChanged(string info)
+        {
+            //イベントはnullを許容
+
+            if(info == "ElapsedTimeString")
+            {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ElapsedTime"));
+            }
+            else
+            {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
+            }
+        }
+
+        #endregion
+
+        #region "PropertyChangedProxy"
+
+        //Modelの変更を型安全にViewに通知する便利クラス
+        private PropertyChangedProxy<Models.KeyInputStatistics, string> _keyInputPropertyChanged;
+        private PropertyChangedProxy<Models.KeyInputStatistics, int> _keyInputPropertyChangedKeyDownSum;
+        private PropertyChangedProxy<Models.KeyInputStatistics, double> _keyInputPropertyChangedCurrentKPM;
+        private PropertyChangedProxy<Models.KeyInputStatistics, double> _keyInputPropertyChangedMaxKPM;
+
+
+
+        #endregion
 
         #region "通知プロパティ"
 
@@ -49,14 +82,97 @@ namespace HookApp.ViewModels
             }
         }
 
-        #endregion
+        /// <summary>
+        /// 現在のKPM値
+        /// </summary>
+        public double CurrentKPM
+        {
+            get
+            {
+                return this.KeyInputStatistics.CurrentKPM;
+            }
+            set
+            {
+                this.KeyInputStatistics.CurrentKPM = value;
+                this.OnPropertyChanged(nameof(CurrentKPM));
+            }
+        }
+
+        /// <summary>
+        /// 最高KPM値
+        /// </summary>
+        public double MaxKPM
+        {
+            get
+            {
+                return this.KeyInputStatistics.MaxKPM;
+            }
+            set
+            {
+                this.KeyInputStatistics.MaxKPM = value;
+                this.OnPropertyChanged(nameof(MaxKPM));
+            }
+        }
+
+        /// <summary>
+        /// キー合計打鍵数
+        /// </summary>
+        public int KeyDownSum
+        {
+            get
+            {
+                return this.KeyInputStatistics.KeyDownSum;
+            }
+            set
+            {
+                this.KeyInputStatistics.KeyDownSum = value;
+                this.OnPropertyChanged(nameof(KeyDownSum));
+            }
+        }
+
+        /// <summary>
+        /// アプリケーションが開始した時刻。
+        /// </summary>
+        public DateTime StartUpTime { get; }
+
+        /// <summary>
+        /// アプリケーションが開始してから経過した時間。
+        /// </summary>
+        public string ElapsedTime
+        {
+            get
+            {
+                //フォーマットして返却する
+                return this.KeyInputStatistics.ElapsedTimeString;
+            }
+        }
+
 
         public ObservableCollection<KeyBoardDisplay.KeyDisplayInfo> KeyDisplayInfoCollection { get; set; }
+
+        #endregion
+
+        #region "非通知プロパティ"
 
         /// <summary>
         /// タイトル文字列プロパティ。
         /// </summary>
         public string TitleString { get; set; }
+
+        /// <summary>
+        /// Shiftキーが現在押下されているかどうかを表します。
+        /// </summary>
+        [Obsolete("KeyboardDisplayから取得するように変更する")]
+        private bool IsShiftPressed { get; set; }
+
+        /// <summary>
+        /// キー入力取得時、この文字にセパレータを挿入するかどうかのフラグ。
+        /// </summary>
+        public bool IsInsertSeparatorSymbol;
+
+        #endregion
+
+        #region "Modelsインスタンス"
 
         /// <summary>
         /// キーボード入力取得を行うクラスインスタンス。
@@ -68,7 +184,9 @@ namespace HookApp.ViewModels
         /// </summary>
         private Models.KeyBoardDisplay KeyboardDisplay { get; }
 
-        private bool IsShiftPressed { get; set; }
+        private Models.KeyInputStatistics KeyInputStatistics { get; }
+
+        #endregion
 
         /// <summary>
         /// MainWindowのViewModelを初期化します。
@@ -81,10 +199,39 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookKeyDown += this.KeyHookKeyDown_Handler;
             this.KeyboardUtil.KeyHookShiftKeyUp += this.KeyHookShiftKeyUp_Handler;
             this.KeyboardUtil.KeyHookShiftKeyDown += this.KeyHookShiftKeyDown_Handler;
+            this.KeyboardUtil.KeyHookAltKeyUp += this.KeyHookAltKeyUp_Handler;
+            this.KeyboardUtil.KeyHookAltKeyDown += this.KeyHookAltKeyDown_Handler;
 
             //キーボード入力表示クラスのインスタンスを生成・プロパティの割当
             this.KeyboardDisplay = new KeyBoardDisplay();
             KeyDisplayInfoCollection = KeyboardDisplay.KeyDisplayInfoCollection;
+
+            //キー入力統計情報
+            KeyInputStatistics = new KeyInputStatistics();
+            this.KeyboardUtil.KeyHookKeyDown += KeyInputStatistics.KeyDownCount;
+            this.KeyboardUtil.KeyHookShiftKeyDown += KeyInputStatistics.KeyDownCount;
+            this.KeyboardUtil.KeyHookAltKeyDown += KeyInputStatistics.KeyDownCount;
+            var vm = this;
+            _keyInputPropertyChanged = new PropertyChangedProxy<KeyInputStatistics, string>(
+                KeyInputStatistics, 
+                keyStatic => keyStatic.ElapsedTimeString, 
+                elapsedTime => vm.OnPropertyChanged(nameof(elapsedTime))
+            );
+            _keyInputPropertyChangedKeyDownSum = new PropertyChangedProxy<KeyInputStatistics, int>(
+                KeyInputStatistics,
+                keyStatic => keyStatic.KeyDownSum,
+                KeyDownSum => vm.OnPropertyChanged(nameof(KeyDownSum))
+            );
+            _keyInputPropertyChangedCurrentKPM = new PropertyChangedProxy<KeyInputStatistics, double>(
+               KeyInputStatistics,
+               keyStatic => keyStatic.CurrentKPM,
+               CurrentKPM => vm.OnPropertyChanged(nameof(CurrentKPM))
+           );
+            _keyInputPropertyChangedMaxKPM = new PropertyChangedProxy<KeyInputStatistics, double>(
+               KeyInputStatistics,
+               keyStatic => keyStatic.MaxKPM,
+               MaxKPM => vm.OnPropertyChanged(nameof(MaxKPM))
+           );
 
             //最初の入力にセパレータは不要
             this.IsInsertSeparatorSymbol = false;
@@ -96,15 +243,7 @@ namespace HookApp.ViewModels
             this.TitleString = Models.General.GetTitleString();
         }
 
-        /// <summary>
-        /// プロパティ変更の通知メソッド。
-        /// </summary>
-        /// <param name="info"></param>
-        protected void OnPropertyChanged(string info)
-        {
-            //イベントはnullを許容
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
-        }
+        
 
         /// <summary>
         /// キーアップイベントハンドラ
@@ -257,5 +396,34 @@ namespace HookApp.ViewModels
             }
         }
 
+        private void KeyHookAltKeyUp_Handler(object sender, Models.KeyboardUtil.HookKeyEventArgs e)
+        {
+            var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
+            if (keyDisp == null)
+            {
+                //キーコードが存在しない場合何もしない
+            }
+            else
+            {
+                //このキーのオーバーレイを表示する
+                keyDisp.Visible = Visibility.Hidden;
+            }
+
+        }
+
+        private void KeyHookAltKeyDown_Handler(object sender, Models.KeyboardUtil.HookKeyEventArgs e)
+        {
+            var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
+            if (keyDisp == null)
+            {
+                //キーコードが存在しない場合何もしない
+            }
+            else
+            {
+                //このキーのオーバーレイを表示する
+                keyDisp.Visible = Visibility.Visible;
+            }
+
+        }
     }
 }
