@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
+    <PackageReference Include="YamlDotNet.NetCore" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,6 +71,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\KeyDisplaySetting.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Setting.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Setting.Designer.cs</LastGenOutput>

@@ -107,6 +107,33 @@ namespace HookApp.Models
             KeyDisplayInfoCollection.Add(new KeyDisplayInfo(KeyboardUtilConstants.VirtualKeyCode.AppKey, "../Resources/SystemKey.png", 41D, 32D, 440D, 162D, Visibility.Hidden));
             KeyDisplayInfoCollection.Add(new KeyDisplayInfo(KeyboardUtilConstants.VirtualKeyCode.RightControl, "../Resources/SystemKey.png", 41D, 32D, 484D, 162D, Visibility.Hidden));
             KeyDisplayInfoCollection.Add(new KeyDisplayInfo(KeyboardUtilConstants.VirtualKeyCode.Return, "../Resources/Enter.png", 42D, 67D, 483D, 57D, Visibility.Hidden));
+
+
+            //YAMLロードテスト
+
+
+
+        }
+
+        /// <summary>
+        /// YAMLからロードされた画像情報を保持します
+        /// </summary>
+        public class LoadedPicSettings
+        {
+            public string KeyName { get; set; }
+
+
+            
+            public class KeyPics
+            {
+
+            }
+
+            public class KeyPoses
+            {
+
+            }
+
         }
 
         public class KeyDisplayInfo : INotifyPropertyChanged
