@@ -7,7 +7,7 @@
 #
 # 〇設定方法
 # KeyPic項目 : KeyNameに対応するキー画像の情報を入力する。
-#    PicPath : HookApp.exeから画像への相対パス。
+#    PicName : 画像の名前。
 #   PicWitdh : キー画像の横幅(px)。
 #   PicHeight: キー画像の縦幅(px)。
 #
@@ -21,30 +21,31 @@
 #
 #
 
-- KeyName : "Escape"
-  KeyPic:
-    PicPath : "./Resources/Esc.png"
-    PicWidth: 32
-    PicHeight: 16
-  KeyPos:
-    PosLeft: 3
-    PosTop : 3
-
-- KeyName : "F1"
-  KeyPic:
-    PicPath : "./Resources/Esc.png"
-    PicWidth: 32
-    PicHeight: 16
-  KeyPos:
-    PosLeft: 3
-    PosTop : 3
-
-- KeyName : "F2"
-  KeyPic:
-    PicPath : "./Resources/Esc.png"
-    PicWidth: 32
-    PicHeight: 16
-  KeyPos:
-    PosLeft: 3
-    PosTop : 3
-
+- Settings :
+  - KeyName : "Escape"
+    KeyPic:
+      PicName : "Esc.png"
+      PicWidth: 32
+      PicHeight: 16
+    KeyPos:
+      PosLeft: 3
+      PosTop : 3
+  
+  - KeyName : "F1"
+    KeyPic:
+      PicName : "Esc.png"
+      PicWidth: 32
+      PicHeight: 16
+    KeyPos:
+      PosLeft: 3
+      PosTop : 3
+  
+  - KeyName : "F2"
+    KeyPic:
+      PicName : "Esc.png"
+      PicWidth: 32
+      PicHeight: 16
+    KeyPos:
+      PosLeft: 3
+      PosTop : 3
+  

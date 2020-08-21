@@ -10,6 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.ComponentModel;
+using YamlDotNet.Serialization;
+using System.IO;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace HookApp.Models
 {
@@ -110,7 +113,7 @@ namespace HookApp.Models
 
 
             //YAMLロードテスト
-
+            var loadedPic = Deserialize(@"C:\Users\koike.LOGIC\Source\Repos\HookApp2\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
 
 
         }
@@ -120,20 +123,44 @@ namespace HookApp.Models
         /// </summary>
         public class LoadedPicSettings
         {
+            [YamlMember(Alias = "KeyName")]
             public string KeyName { get; set; }
 
+            [YamlMember(Alias = "KeyPic")]
+            public KeyPic KeyPics { get; set; }
 
-            
-            public class KeyPics
-            {
+            [YamlMember(Alias = "KeyPos")]
+            public KeyPos keyPoses { get; set; }
+        }
 
-            }
+        public class KeyPic
+        {
+            public string PicName { get; set; }
+            public double PicWidth { get; set; }
+            public double PicHeight { get; set; }
+        }
 
-            public class KeyPoses
-            {
+        public class KeyPos
+        {
+            public double PosLeft { get; set; }
+            public double PosRight { get; set; }
+        }
 
-            }
+        /// <summary>
+        /// 指定したYAML形式の画像設定ファイルをデシリアライズします。
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        private List<LoadedPicSettings> Deserialize(string filePath)
+        {
+            //ファイルを開き、テキストとして取得
+            var fileSr = new StreamReader(filePath);
+            string text = fileSr.ReadToEnd();
 
+            //デシリアライザを構成し、結果を返却
+            var deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+
+            return deserializer.Deserialize<List<LoadedPicSettings>>(text);
         }
 
         public class KeyDisplayInfo : INotifyPropertyChanged
