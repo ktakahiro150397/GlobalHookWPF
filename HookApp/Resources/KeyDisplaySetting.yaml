@@ -20,32 +20,30 @@
 # http://yaml-online-parser.appspot.com/
 #
 #
+- KeyName : "Escape"
+  KeyPic:
+    PicName : "Esc.png"
+    PicWidth: 32
+    PicHeight: 16
+  KeyPos:
+    PosLeft: 3
+    PosTop : 3
 
-- Settings :
-  - KeyName : "Escape"
-    KeyPic:
-      PicName : "Esc.png"
-      PicWidth: 32
-      PicHeight: 16
-    KeyPos:
-      PosLeft: 3
-      PosTop : 3
-  
-  - KeyName : "F1"
-    KeyPic:
-      PicName : "Esc.png"
-      PicWidth: 32
-      PicHeight: 16
-    KeyPos:
-      PosLeft: 3
-      PosTop : 3
-  
-  - KeyName : "F2"
-    KeyPic:
-      PicName : "Esc.png"
-      PicWidth: 32
-      PicHeight: 16
-    KeyPos:
-      PosLeft: 3
-      PosTop : 3
-  
+- KeyName : "F1"
+  KeyPic:
+    PicName : "Esc.png"
+    PicWidth: 32
+    PicHeight: 16
+  KeyPos:
+    PosLeft: 3
+    PosTop : 3
+
+- KeyName : "F2"
+  KeyPic:
+    PicName : "Esc.png"
+    PicWidth: 32
+    PicHeight: 16
+  KeyPos:
+    PosLeft: 3
+    PosTop : 3
+

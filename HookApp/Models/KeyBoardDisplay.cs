@@ -113,7 +113,8 @@ namespace HookApp.Models
 
 
             //YAMLロードテスト
-            var loadedPic = Deserialize(@"C:\Users\koike.LOGIC\Source\Repos\HookApp2\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
+            //var loadedPic = Deserialize(@"C:\Users\koike.LOGIC\Source\Repos\HookApp2\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
+            var loadedPic = Deserialize(@"C:\Users\Takahiro\source\repos\HookApp\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
 
 
         }
@@ -143,7 +144,7 @@ namespace HookApp.Models
         public class KeyPos
         {
             public double PosLeft { get; set; }
-            public double PosRight { get; set; }
+            public double PosTop { get; set; }
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace HookApp.Models
             string text = fileSr.ReadToEnd();
 
             //デシリアライザを構成し、結果を返却
-            var deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+            var deserializer = new DeserializerBuilder().Build();
 
             return deserializer.Deserialize<List<LoadedPicSettings>>(text);
         }
