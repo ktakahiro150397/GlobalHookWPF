@@ -114,7 +114,7 @@ namespace HookApp.Models
 
             //YAMLロードテスト
             //var loadedPic = Deserialize(@"C:\Users\koike.LOGIC\Source\Repos\HookApp2\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
-            var loadedPic = Deserialize(@"C:\Users\Takahiro\source\repos\HookApp\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
+            //var loadedPic = Deserialize(@"C:\Users\Takahiro\source\repos\HookApp\HookApp\bin\Debug\netcoreapp3.1\Resources\KeyDisplaySetting.yaml");
 
 
         }

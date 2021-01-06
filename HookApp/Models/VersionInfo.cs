@@ -41,31 +41,44 @@ namespace HookApp.Models
             //リクエストを投げてレスポンスのStreamReaderを得る
             var request = WebRequest.Create(requestUrl);
             request.Method = "GET";
-            var responseStream = request.GetResponse().GetResponseStream();
-            var reader = new StreamReader(responseStream);
 
-            //取得したデータをパース
-            var obtainedJsonStr = reader.ReadToEnd();
-            var versionInfo = JsonSerializer.Deserialize<APIVersionInfo>(obtainedJsonStr);
-
-            //自身のプロパティに設定する
-            if(versionInfo == null)
+            try
             {
-                //取得失敗時
+                var responseStream = request.GetResponse().GetResponseStream();
+                var reader = new StreamReader(responseStream);
+
+                //取得したデータをパース
+                var obtainedJsonStr = reader.ReadToEnd();
+                var versionInfo = JsonSerializer.Deserialize<APIVersionInfo>(obtainedJsonStr);
+
+                //自身のプロパティに設定する
+                if (versionInfo == null)
+                {
+                    //取得失敗時
+                    VersionInfoProperty.IsNoError = false;
+                    VersionInfoProperty.ID = 0;
+                    VersionInfoProperty.major = 0;
+                    VersionInfoProperty.minor = 0;
+                    VersionInfoProperty.revision = null;
+                }
+                else
+                {
+                    //取得成功時
+                    VersionInfoProperty.IsNoError = true;
+                    VersionInfoProperty.ID = versionInfo.id;
+                    VersionInfoProperty.major = versionInfo.major;
+                    VersionInfoProperty.minor = versionInfo.minor;
+                    VersionInfoProperty.revision = versionInfo.revision;
+                }
+
+            }
+            catch(WebException ex){
+                //URLが見つからない場合
                 VersionInfoProperty.IsNoError = false;
                 VersionInfoProperty.ID = 0;
                 VersionInfoProperty.major = 0;
                 VersionInfoProperty.minor = 0;
                 VersionInfoProperty.revision = null;
-            }
-            else
-            {
-                //取得成功時
-                VersionInfoProperty.IsNoError = true;
-                VersionInfoProperty.ID = versionInfo.id;
-                VersionInfoProperty.major = versionInfo.major;
-                VersionInfoProperty.minor = versionInfo.minor;
-                VersionInfoProperty.revision = versionInfo.revision;
             }
         }
 
