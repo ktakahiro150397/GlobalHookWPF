@@ -1,0 +1,35 @@
+@startuml
+
+title HookApp_OverView
+
+top to bottom direction
+skinparam actorstyle awesome
+
+:ユーザー: as user
+
+package App {
+    usecase "入力取得" as keyObtain
+    usecase "入力表示" as keyDisplay
+    usecase "入力保存" as keySave
+    usecase "入力履歴出力" as keyInputHistoryOut
+    
+}
+
+package DB {
+    usecase "データ保持" as keyStore
+    usecase "データ提供" as keyInputHistoryServer
+}
+
+user --> keyObtain : キー入力
+
+keyObtain --> keyDisplay
+keyDisplay --> user : (モニター越し)
+
+keyObtain --> keySave
+keySave --> keyStore
+
+user --> keyInputHistoryOut : データ出力操作
+keyInputHistoryServer --> keyInputHistoryOut : データ提供
+
+
+@enduml
