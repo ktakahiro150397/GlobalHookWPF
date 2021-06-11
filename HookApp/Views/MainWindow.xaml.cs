@@ -40,39 +40,15 @@ namespace HookApp
         }
 
         /// <summary>
-        /// クリアボタン押下のイベントハンドラ
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            _vm.inputHistory = "";
-
-            //クリア後にセパレータは挿入しない
-            _vm.IsInsertSeparatorSymbol = false;
-        }
-
-        /// <summary>
         /// テキスト変更イベント。
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void inputHistory_TextChanged(object sender, TextChangedEventArgs e)
+        private void inputhistory_textchanged(object sender, TextChangedEventArgs e)
         {
             //テキストが変更されたとき、最下部までスクロールする
-            var txtBox = (TextBox)sender;
-            txtBox.ScrollToEnd();
-        }
-
-        /// <summary>
-        /// バージョン情報クリックイベント。
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void VersionInfo_Click(object sender, RoutedEventArgs e)
-        {
-            var versionInfo = new VersionInfo();
-            versionInfo.Show();
+            var txtbox = (TextBox)sender;
+            txtbox.ScrollToEnd();
         }
     }
 }

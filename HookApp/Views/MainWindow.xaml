@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:HookApp"
         mc:Ignorable="d"
         Title="{Binding TitleString}" Height="450" Width="1000">
@@ -21,7 +22,7 @@
         <!--画面上部のメニュー-->
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Top">
             <MenuItem Header="メニュー">
-                <MenuItem Header="画面のクリア" Click="btnClear_Click" InputGestureText=""></MenuItem>
+                <MenuItem Header="画面のクリア" InputGestureText="" Command="{Binding ClearInput}" ></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="ウィンドウを閉じる" InputGestureText=""></MenuItem>
             </MenuItem>
@@ -41,9 +42,9 @@
                  VerticalScrollBarVisibility="Visible"
                  Background="#00a2e8"
                  IsReadOnly="True"
-                 TextChanged="inputHistory_TextChanged"
                  Text="{Binding inputHistory}"
-                 ></TextBox>
+                 >
+        </TextBox>
 
 
         <!--グラフ表示部分-->
@@ -107,15 +108,15 @@
 
         </Grid>
 
-        
+
 
         <!--<TextBlock x:Name="txtTempMsgGrapg"
                    Text="グラフ表示予定領域"
                    Grid.Row="1"
                    Grid.Column="2"
                    ></TextBlock>-->
-        
-        
+
+
         <!--キーボード入力表示部分-->
         <Image x:Name="KeyboardOverAllImage"
                 Source="../Resources/main.png"
@@ -147,7 +148,7 @@
                            Height="{Binding Height}"
                            Width="{Binding Width}"
                            ></Image>
-                   
+
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <!--ItemContainerStyle:要素ごとの表示方法を指定する(CSSと同一)-->

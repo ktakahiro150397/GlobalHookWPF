@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows;
 using HookApp.Models;
 using HookApp.Lib;
+using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace HookApp.ViewModels
 {
@@ -172,6 +174,12 @@ namespace HookApp.ViewModels
 
         #endregion
 
+        #region "コマンドプロパティ"
+
+            public ICommand ClearInput { get; private set; }
+
+        #endregion
+
         #region "Modelsインスタンス"
 
         /// <summary>
@@ -241,6 +249,9 @@ namespace HookApp.ViewModels
 
             //バージョン情報を取得し、タイトルへ反映する
             this.TitleString = Models.General.GetTitleString();
+
+            //コマンド割当
+            ClearInput = new ClearInput_Imp(this);
         }
 
         
@@ -276,13 +287,29 @@ namespace HookApp.ViewModels
             //入力文字を取得する
             if (this.IsShiftPressed)
             {
-                //シフトが押されている場合、大文字を取得
-                inputChar = KeyboardUtilConstants.bigKeyNameDictionary[e.vkCode];
+                try
+                {
+
+                    //シフトが押されている場合、大文字を取得
+                    inputChar = KeyboardUtilConstants.bigKeyNameDictionary[e.vkCode];
+                }
+                catch(KeyNotFoundException keyEx)
+                {
+                    //割り当てる文字が存在しない
+                }
+
             }
             else
             {
-                //シフトが押されていない場合、小文字を取得
-                inputChar = KeyboardUtilConstants.smallKeyNameDictionary[e.vkCode];
+                try
+                {
+                    //シフトが押されていない場合、小文字を取得
+                    inputChar = KeyboardUtilConstants.smallKeyNameDictionary[e.vkCode];
+                }
+                catch (KeyNotFoundException keyEx)
+                {
+                    //割り当てる文字が存在しない
+                }
             }
 
             if (inputChar == null)
@@ -425,5 +452,42 @@ namespace HookApp.ViewModels
             }
 
         }
+
+        /// <summary>
+        /// テキストクリア処理コマンド
+        /// </summary>
+        public class ClearInput_Imp : ICommand
+        {
+
+            private MainWindowViewModel _vm;
+            public ClearInput_Imp(MainWindowViewModel vm)
+            {
+                _vm = vm;
+            }
+
+            event EventHandler ICommand.CanExecuteChanged
+            {
+                add
+                {
+                   
+                }
+
+                remove
+                {
+                    
+                }
+            }
+
+            bool ICommand.CanExecute(object parameter)
+            {
+                return true;
+            }
+
+            void ICommand.Execute(object parameter)
+            {
+                _vm.inputHistory = "";
+            }
+        }
+
     }
 }
