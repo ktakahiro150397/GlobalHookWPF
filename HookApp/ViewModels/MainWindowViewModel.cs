@@ -9,6 +9,7 @@ using HookApp.Models;
 using HookApp.Lib;
 using System.Windows.Input;
 using System.Windows.Controls;
+using HookApp.ViewModels.Commands;
 
 namespace HookApp.ViewModels
 {
@@ -178,6 +179,8 @@ namespace HookApp.ViewModels
 
             public ICommand ClearInput { get; private set; }
 
+            public ICommand OpenOption { get; private set; }
+
         #endregion
 
         #region "Modelsインスタンス"
@@ -252,6 +255,7 @@ namespace HookApp.ViewModels
 
             //コマンド割当
             ClearInput = new ClearInput_Imp(this);
+            OpenOption = new OpenOption(this);
         }
 
         
@@ -451,42 +455,6 @@ namespace HookApp.ViewModels
                 keyDisp.Visible = Visibility.Visible;
             }
 
-        }
-
-        /// <summary>
-        /// テキストクリア処理コマンド
-        /// </summary>
-        public class ClearInput_Imp : ICommand
-        {
-
-            private MainWindowViewModel _vm;
-            public ClearInput_Imp(MainWindowViewModel vm)
-            {
-                _vm = vm;
-            }
-
-            event EventHandler ICommand.CanExecuteChanged
-            {
-                add
-                {
-                   
-                }
-
-                remove
-                {
-                    
-                }
-            }
-
-            bool ICommand.CanExecute(object parameter)
-            {
-                return true;
-            }
-
-            void ICommand.Execute(object parameter)
-            {
-                _vm.inputHistory = "";
-            }
         }
 
     }

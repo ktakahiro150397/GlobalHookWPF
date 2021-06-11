@@ -50,5 +50,26 @@ namespace HookApp
             var txtbox = (TextBox)sender;
             txtbox.ScrollToEnd();
         }
+
+        /// <summary>
+        /// ウィンドウ閉じるイベント。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseWindow(object sender,EventArgs e)
+        {
+
+            var res = MessageBox.Show("画面を閉じます。よろしいですか？","確認",MessageBoxButton.YesNo);
+
+            switch (res)
+            {
+                case MessageBoxResult.Yes:
+                    //ウィンドウを閉じる
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+        }
     }
 }
