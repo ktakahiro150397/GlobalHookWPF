@@ -43,6 +43,7 @@
                  Background="#00a2e8"
                  IsReadOnly="True"
                  Text="{Binding inputHistory}"
+                 TextChanged="Inputhistory_Textchanged"
                  >
         </TextBox>
 

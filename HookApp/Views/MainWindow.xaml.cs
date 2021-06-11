@@ -44,7 +44,7 @@ namespace HookApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void inputhistory_textchanged(object sender, TextChangedEventArgs e)
+        private void Inputhistory_Textchanged(object sender, TextChangedEventArgs e)
         {
             //テキストが変更されたとき、最下部までスクロールする
             var txtbox = (TextBox)sender;
