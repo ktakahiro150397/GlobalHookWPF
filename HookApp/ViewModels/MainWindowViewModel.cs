@@ -9,13 +9,14 @@ using HookApp.Models;
 using HookApp.Lib;
 using System.Windows.Input;
 using System.Windows.Controls;
+using HookApp.ViewModels.Commands;
 
 namespace HookApp.ViewModels
 {
     /// <summary>
     /// MainWindowのViewModel
     /// </summary>
-    class MainWindowViewModel : INotifyPropertyChanged
+    class MainWindowViewModel : BaseViewModel
     {
 
         #region "privateフィールド"
@@ -24,33 +25,6 @@ namespace HookApp.ViewModels
         /// 画面に表示するキー入力履歴文字列。
         /// </summary>
         private string _inputHistory;
-
-        #endregion
-
-        #region "IPropertyChanged"
-
-        /// <summary>
-        /// プロパティ変更をUI側へ通知するイベント
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// プロパティ変更の通知メソッド。
-        /// </summary>
-        /// <param name="info"></param>
-        protected void OnPropertyChanged(string info)
-        {
-            //イベントはnullを許容
-
-            if(info == "ElapsedTimeString")
-            {
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ElapsedTime"));
-            }
-            else
-            {
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
-            }
-        }
 
         #endregion
 
@@ -178,6 +152,8 @@ namespace HookApp.ViewModels
 
             public ICommand ClearInput { get; private set; }
 
+            public ICommand OpenOption { get; private set; }
+
         #endregion
 
         #region "Modelsインスタンス"
@@ -252,6 +228,7 @@ namespace HookApp.ViewModels
 
             //コマンド割当
             ClearInput = new ClearInput_Imp(this);
+            OpenOption = new OpenOption(this);
         }
 
         
@@ -451,42 +428,6 @@ namespace HookApp.ViewModels
                 keyDisp.Visible = Visibility.Visible;
             }
 
-        }
-
-        /// <summary>
-        /// テキストクリア処理コマンド
-        /// </summary>
-        public class ClearInput_Imp : ICommand
-        {
-
-            private MainWindowViewModel _vm;
-            public ClearInput_Imp(MainWindowViewModel vm)
-            {
-                _vm = vm;
-            }
-
-            event EventHandler ICommand.CanExecuteChanged
-            {
-                add
-                {
-                   
-                }
-
-                remove
-                {
-                    
-                }
-            }
-
-            bool ICommand.CanExecute(object parameter)
-            {
-                return true;
-            }
-
-            void ICommand.Execute(object parameter)
-            {
-                _vm.inputHistory = "";
-            }
         }
 
     }

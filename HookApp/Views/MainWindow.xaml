@@ -23,11 +23,12 @@
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Top">
             <MenuItem Header="メニュー">
                 <MenuItem Header="画面のクリア" InputGestureText="" Command="{Binding ClearInput}" ></MenuItem>
+                <MenuItem Header="設定" InputGestureText="Ctrl + ," Command="{Binding OpenOption}"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="ウィンドウを閉じる" InputGestureText=""></MenuItem>
+                <MenuItem Header="ウィンドウを閉じる" InputGestureText="" Click="CloseWindow"></MenuItem>
             </MenuItem>
             <MenuItem Header="ヘルプ">
-                <MenuItem Header="バージョン情報"></MenuItem>
+                <MenuItem Header="バージョン情報" ></MenuItem>
             </MenuItem>
         </Menu>
 
@@ -129,7 +130,7 @@
                 Width="528"
                 Panel.ZIndex="-1"></Image>
 
-        <ItemsControl ItemsSource="{Binding Path=KeyDisplayInfoCollection}"
+        <ItemsControl ItemsSource="{Binding KeyDisplayInfoCollection}"
                       x:Name="itemControlTest"
                       Grid.Row="2"
                       Grid.Column="2">
