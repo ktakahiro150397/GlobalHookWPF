@@ -46,6 +46,8 @@ namespace HookApp
         /// <param name="e"></param>
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+
+            //TODO : Commandで通知するように変更する
             _vm.inputHistory = "";
 
             //クリア後にセパレータは挿入しない
@@ -59,6 +61,8 @@ namespace HookApp
         /// <param name="e"></param>
         private void inputHistory_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //TODO : Commandで通知するように変更する
+
             //テキストが変更されたとき、最下部までスクロールする
             var txtBox = (TextBox)sender;
             txtBox.ScrollToEnd();
@@ -71,6 +75,8 @@ namespace HookApp
         /// <param name="e"></param>
         private void VersionInfo_Click(object sender, RoutedEventArgs e)
         {
+            //TODO : Commandで通知するように変更する
+
             var versionInfo = new VersionInfo();
             versionInfo.Show();
         }
