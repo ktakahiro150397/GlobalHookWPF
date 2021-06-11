@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HookApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,13 @@ namespace HookApp.Views
     /// </summary>
     public partial class Option : Window
     {
+
+        private OptionViewModel _vm;
         public Option()
         {
             InitializeComponent();
+
+            _vm = new OptionViewModel();
         }
     }
 }

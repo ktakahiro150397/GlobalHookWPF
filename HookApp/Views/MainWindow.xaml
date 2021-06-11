@@ -28,7 +28,7 @@
                 <MenuItem Header="ウィンドウを閉じる" InputGestureText="" Click="CloseWindow"></MenuItem>
             </MenuItem>
             <MenuItem Header="ヘルプ">
-                <MenuItem Header="バージョン情報"  Command="{Binding CloseWindow}"></MenuItem>
+                <MenuItem Header="バージョン情報" ></MenuItem>
             </MenuItem>
         </Menu>
 

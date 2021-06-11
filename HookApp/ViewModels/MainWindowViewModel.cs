@@ -16,7 +16,7 @@ namespace HookApp.ViewModels
     /// <summary>
     /// MainWindowのViewModel
     /// </summary>
-    class MainWindowViewModel : INotifyPropertyChanged
+    class MainWindowViewModel : BaseViewModel
     {
 
         #region "privateフィールド"
@@ -25,33 +25,6 @@ namespace HookApp.ViewModels
         /// 画面に表示するキー入力履歴文字列。
         /// </summary>
         private string _inputHistory;
-
-        #endregion
-
-        #region "IPropertyChanged"
-
-        /// <summary>
-        /// プロパティ変更をUI側へ通知するイベント
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// プロパティ変更の通知メソッド。
-        /// </summary>
-        /// <param name="info"></param>
-        protected void OnPropertyChanged(string info)
-        {
-            //イベントはnullを許容
-
-            if(info == "ElapsedTimeString")
-            {
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ElapsedTime"));
-            }
-            else
-            {
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
-            }
-        }
 
         #endregion
 
