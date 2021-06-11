@@ -27,7 +27,7 @@
                 <MenuItem Header="ウィンドウを閉じる" InputGestureText=""></MenuItem>
             </MenuItem>
             <MenuItem Header="ヘルプ">
-                <MenuItem Header="バージョン情報" Click="VersionInfo_Click"></MenuItem>
+                <MenuItem Header="バージョン情報"></MenuItem>
             </MenuItem>
         </Menu>
 
