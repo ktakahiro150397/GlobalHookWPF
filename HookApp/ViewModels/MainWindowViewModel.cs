@@ -16,7 +16,7 @@ namespace HookApp.ViewModels
     /// <summary>
     /// MainWindowのViewModel
     /// </summary>
-    class MainWindowViewModel : BaseViewModel
+    internal class MainWindowViewModel : BaseViewModel
     {
 
         #region "privateフィールド"
@@ -119,7 +119,7 @@ namespace HookApp.ViewModels
             get
             {
                 //フォーマットして返却する
-                return this.KeyInputStatistics.ElapsedTimeString;
+                return "";
             }
         }
 
