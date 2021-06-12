@@ -37,7 +37,8 @@ namespace HookApp.ViewModels.Commands
 
         void ICommand.Execute(object parameter)
         {
-            var option = new Option();
+
+            var option = new Option(new Models.AppSettingsModel("def"));
             option.Show();
         }
     }

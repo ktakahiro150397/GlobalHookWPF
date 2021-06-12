@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HookApp.Models
 {
-    internal class AppSettingsModel
+    public class AppSettingsModel
     {
         public string SelectedSkinFolderName { get; set; }
 

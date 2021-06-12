@@ -36,7 +36,7 @@ namespace HookApp.ViewModels
         /// <summary>
         /// <see cref="ICommand"/>で使用するアクションクラスのリストを用意します。
         /// </summary>
-        private Dictionary<CommandActionType, Action> CommandClasses { get; set; } 
+        private Dictionary<CommandActionType, Action> CommandClasses { get; set; }
 
         public void AddCommandAction(CommandActionType actionType, Action commandClass)
         {
