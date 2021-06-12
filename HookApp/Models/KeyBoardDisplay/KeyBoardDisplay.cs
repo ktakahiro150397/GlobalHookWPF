@@ -14,7 +14,7 @@ using YamlDotNet.Serialization;
 using System.IO;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace HookApp.Models
+namespace HookApp.Models.KeyBoardDisplay
 {
     /// <summary>
     /// キーボード表示についてのロジックを持ちます。
@@ -120,6 +120,15 @@ namespace HookApp.Models
         }
 
         /// <summary>
+        /// 設定ファイルのファイルパスを指定し、
+        /// </summary>
+        /// <param name="settingFilePath"></param>
+        public KeyBoardDisplay(string settingFilePath)
+        {
+
+        }
+
+        /// <summary>
         /// YAMLからロードされた画像情報を保持します
         /// </summary>
         public class LoadedPicSettings
@@ -172,7 +181,7 @@ namespace HookApp.Models
             /// </summary>
             public event PropertyChangedEventHandler PropertyChanged;
 
-            private Visibility _visible;
+            public KeyboardUtilConstants.VirtualKeyCode Key { get; }
 
             public string PicUri { get; }
             public double Height { get; }
@@ -180,6 +189,11 @@ namespace HookApp.Models
             public double Top { get; }
             public double Left { get; }
 
+            private Visibility _visible;
+
+            /// <summary>
+            /// キーの表示を取得、または変更して通知します。
+            /// </summary>
             public Visibility Visible
             {
                 get
@@ -193,8 +207,8 @@ namespace HookApp.Models
                 }
             }
 
-            public KeyboardUtilConstants.VirtualKeyCode Key { get; }
 
+            [Obsolete("IKeyDisplayInfoから初期化するようにする")]
             public KeyDisplayInfo(KeyboardUtilConstants.VirtualKeyCode key, string picUri, double width, double height, double left, double top, Visibility visible)
             {
                 Key = key;
@@ -204,6 +218,24 @@ namespace HookApp.Models
                 Top = top;
                 Left = left;
                 _visible = visible;
+            }
+
+            /// <summary>
+            /// キーの画像情報から、表示情報を初期化します。
+            /// </summary>
+            /// <param name="initializeData"></param>
+            public KeyDisplayInfo(IKeyDisplayInfo initializeData)
+            {
+                Key = initializeData.Key;
+                PicUri = initializeData.PicUri;
+                Height = initializeData.Height;
+                Width = initializeData.Width;
+                Top = initializeData.Top;
+                Left = initializeData.Left;
+
+                //初期状態
+                _visible = Visibility.Hidden;
+
             }
 
             /// <summary>

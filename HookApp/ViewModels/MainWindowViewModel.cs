@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using HookApp.ViewModels.Commands.Common;
 using HookApp.ViewModels.Commands.MainWindow;
+using HookApp.Models.KeyBoardDisplay;
 
 namespace HookApp.ViewModels
 {
@@ -169,9 +170,9 @@ namespace HookApp.ViewModels
         /// <summary>
         /// キーボード表示を行うクラスインスタンス。
         /// </summary>
-        private Models.KeyBoardDisplay KeyboardDisplay { get; }
+        private KeyBoardDisplay KeyboardDisplay { get; }
 
-        private Models.KeyInputStatistics KeyInputStatistics { get; }
+        private KeyInputStatistics KeyInputStatistics { get; }
 
         #endregion
 

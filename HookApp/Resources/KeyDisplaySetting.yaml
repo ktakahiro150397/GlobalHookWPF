@@ -6,25 +6,20 @@
 # ・KeyNameの値を変更しないこと(この名称をキーとしてロードするため)
 #
 # 〇設定方法
-# KeyPic項目 : KeyNameに対応するキー画像の情報を入力する。
-#    PicName : 画像の名前。
-#   PicWitdh : キー画像の横幅(px)。
-#   PicHeight: キー画像の縦幅(px)。
+# KeyPicName : 画像の名前。
 #
 # KeyPos項目 : ベース画像に対して、このキー画像を表示する位置情報を入力する。
-#    PosLeft : 画像左上を原点とした横方向の座標(px)。
-#    PosTop  : 画像左上を原点として下方向の座標(px)。
+#    PosLeft : ベース画像左上を原点とした右方向の座標(px)。
+#    PosTop  : ベース画像左上を原点として下方向の座標(px)。
 #
 # 〇フォーマット確認
 # 入力後、以下URLに張り付けてエラーがなければフォーマットに問題なし
 # http://yaml-online-parser.appspot.com/
 #
 #
+
 - KeyName : "Escape"
-  KeyPic:
-    PicName : "Esc.png"
-    PicWidth: 32
-    PicHeight: 16
+  KeyPicName: "Esc.png"
   KeyPos:
     PosLeft: 3
     PosTop : 3

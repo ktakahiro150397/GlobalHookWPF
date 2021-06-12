@@ -272,7 +272,7 @@ namespace HookApp.Models
     /// <summary>
     /// キー表記に関する定数を持つ静的クラス。
     /// </summary>
-    static class KeyboardUtilConstants
+    public static class KeyboardUtilConstants
     {
         /// <summary>
         /// 仮想キーコード
