@@ -17,8 +17,8 @@ namespace HookApp.ViewModels
         public List<String> FolderList { get; set; }
         public int FolderListSelectedIndex { get; set; }
 
-        public ICommand OKButtonInput { get; private set; }
-        public ICommand CancelButtonInput { get; private set; }
+        public ICommand OKInput { get; private set; }
+        public ICommand CancelInput { get; private set; }
 
         public OptionViewModel(AppSettingsModel appSettings)
         {
@@ -30,12 +30,14 @@ namespace HookApp.ViewModels
             //初期選択処理
 
             //ボタンアクションの割当
-            AddCommandAction(CommandActionType.OK_Input, OnOkPressAction);
+            //AddCommandAction(CommandActionType.OK_Input, OnOkPressAction);
             //AddCommandAction(CommandActionType.Cancel_Input, OnCancelPressAction);
 
             //コマンドクラスのインスタンス化
-            OKButtonInput = new OKButtonInput(this);
-            //CancelButtonInput = new CancelButtonInput(this);
+            OKInput = new MenuCloseButtonInput(this);
+
+            //画面を閉じる
+            CancelInput = new MenuCloseButtonInput(this);
 
         }
 
@@ -44,7 +46,6 @@ namespace HookApp.ViewModels
             //選択されたフォルダ名称を設定
             AppSettings.SelectedSkinFolderName = FolderList[FolderListSelectedIndex];
 
-            //画面を閉じる
         }
 
         ///// <summary>

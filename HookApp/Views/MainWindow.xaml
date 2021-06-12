@@ -23,9 +23,12 @@
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Top">
             <MenuItem Header="メニュー">
                 <MenuItem Header="画面のクリア" InputGestureText="" Command="{Binding ClearInput}" ></MenuItem>
-                <MenuItem Header="設定" InputGestureText="Ctrl + ," Command="{Binding OpenOption}"></MenuItem>
+                <MenuItem Header="設定" InputGestureText="" Command="{Binding OpenOption}"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="ウィンドウを閉じる" InputGestureText="" Click="CloseWindow"></MenuItem>
+                <MenuItem Header="ウィンドウを閉じる" InputGestureText="" 
+                          Command="{Binding WindowClose}"
+                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                          ></MenuItem>
             </MenuItem>
             <MenuItem Header="ヘルプ">
                 <MenuItem Header="バージョン情報" ></MenuItem>

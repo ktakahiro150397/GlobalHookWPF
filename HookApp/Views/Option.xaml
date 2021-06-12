@@ -29,7 +29,7 @@
                     <StackPanel>
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0px 0px 0px 10px" Text="表示するキーボード画像が格納されているフォルダを選択してください。">
                         </TextBlock>
-                        <ComboBox ItemsSource="{Binding }">
+                        <ComboBox>
                             <ComboBoxItem Content="Default" IsSelected="True"></ComboBoxItem>
                             <ComboBoxItem Content="test2"></ComboBoxItem>
                             <ComboBoxItem Content="test1"></ComboBoxItem>
@@ -44,8 +44,18 @@
         </ScrollViewer>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="OK" Width="{StaticResource CommonButtonWidth}" Height="{StaticResource CommonButtonHeight}" Margin="0px 0px 10px 0px"></Button>
-            <Button Content="キャンセル" Width="{StaticResource CommonButtonWidth}" Height="{StaticResource CommonButtonHeight}" Margin="0px 0px 10px 0px"></Button>
+            <Button Content="OK" 
+                    Width="{StaticResource CommonButtonWidth}" 
+                    Height="{StaticResource CommonButtonHeight}" 
+                    Margin="0px 0px 10px 0px"
+                    Command="{Binding OKInput}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"></Button>
+            <Button Content="キャンセル" 
+                    Width="{StaticResource CommonButtonWidth}" 
+                    Height="{StaticResource CommonButtonHeight}" 
+                    Margin="0px 0px 10px 0px"
+                    Command="{Binding CancelInput}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"></Button>
         </StackPanel>
     </Grid>
 
