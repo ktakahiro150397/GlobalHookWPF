@@ -17,6 +17,15 @@
     <None Remove="Resources\07.png" />
     <None Remove="Resources\08.png" />
     <None Remove="Resources\Caps.png" />
+    <None Remove="Resources\Default\Caps.png" />
+    <None Remove="Resources\Default\Enter.png" />
+    <None Remove="Resources\Default\Esc.png" />
+    <None Remove="Resources\Default\LeftShiftSpace.png" />
+    <None Remove="Resources\Default\main.png" />
+    <None Remove="Resources\Default\NormalKey.png" />
+    <None Remove="Resources\Default\RightShift.png" />
+    <None Remove="Resources\Default\SystemKey.png" />
+    <None Remove="Resources\Default\Tab.png" />
     <None Remove="Resources\Enter.png" />
     <None Remove="Resources\Esc.png" />
     <None Remove="Resources\LeftShiftSpace.png" />
@@ -25,6 +34,24 @@
     <None Remove="Resources\RightShift.png" />
     <None Remove="Resources\SystemKey.png" />
     <None Remove="Resources\Tab.png" />
+    <None Remove="Resources\Test2\Caps.png" />
+    <None Remove="Resources\Test2\Enter.png" />
+    <None Remove="Resources\Test2\Esc.png" />
+    <None Remove="Resources\Test2\LeftShiftSpace.png" />
+    <None Remove="Resources\Test2\main.png" />
+    <None Remove="Resources\Test2\NormalKey.png" />
+    <None Remove="Resources\Test2\RightShift.png" />
+    <None Remove="Resources\Test2\SystemKey.png" />
+    <None Remove="Resources\Test2\Tab.png" />
+    <None Remove="Resources\Test3\Caps.png" />
+    <None Remove="Resources\Test3\Enter.png" />
+    <None Remove="Resources\Test3\Esc.png" />
+    <None Remove="Resources\Test3\LeftShiftSpace.png" />
+    <None Remove="Resources\Test3\main.png" />
+    <None Remove="Resources\Test3\NormalKey.png" />
+    <None Remove="Resources\Test3\RightShift.png" />
+    <None Remove="Resources\Test3\SystemKey.png" />
+    <None Remove="Resources\Test3\Tab.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +62,33 @@
 
   <ItemGroup>
     <Resource Include="Resources\Caps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\Caps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\Enter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\Esc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\LeftShiftSpace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\NormalKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\RightShift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\SystemKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Default\Tab.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Enter.png">
@@ -61,6 +115,60 @@
     <Resource Include="Resources\Tab.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Test2\Caps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\Enter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\Esc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\LeftShiftSpace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\NormalKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\RightShift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\SystemKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test2\Tab.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\Caps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\Enter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\Esc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\LeftShiftSpace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\NormalKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\RightShift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\SystemKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Test3\Tab.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -72,7 +180,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\Default\KeyDisplaySetting.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\KeyDisplaySetting.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Test2\KeyDisplaySetting.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Test3\KeyDisplaySetting.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\新しいテキスト ドキュメント.txt">

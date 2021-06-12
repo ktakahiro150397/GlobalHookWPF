@@ -12,7 +12,7 @@ namespace HookApp {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Setting : global::System.Configuration.ApplicationSettingsBase {
         
         private static Setting defaultInstance = ((Setting)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Setting())));
@@ -56,6 +56,39 @@ namespace HookApp {
             }
             set {
                 this["KEYHISTORY_SPACE_SYMBOL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public string SKIN_DEFAULT_FOLDER_NAME {
+            get {
+                return ((string)(this["SKIN_DEFAULT_FOLDER_NAME"]));
+            }
+            set {
+                this["SKIN_DEFAULT_FOLDER_NAME"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public string SKIN_SELECTED_FOLDER_NAME {
+            get {
+                return ((string)(this["SKIN_SELECTED_FOLDER_NAME"]));
+            }
+            set {
+                this["SKIN_SELECTED_FOLDER_NAME"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Resources")]
+        public string SYSTEM_RESOURCE_FOLDER_NAME {
+            get {
+                return ((string)(this["SYSTEM_RESOURCE_FOLDER_NAME"]));
             }
         }
         

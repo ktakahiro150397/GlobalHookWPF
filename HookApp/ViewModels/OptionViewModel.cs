@@ -6,6 +6,8 @@ using System.Windows.Input;
 using HookApp.ViewModels.Consts;
 using HookApp.Models;
 using HookApp.ViewModels.Interfaces;
+using HookApp.ViewModels.Commands.Common;
+using HookApp.ViewModels.Commands.Option;
 
 namespace HookApp.ViewModels
 {
@@ -14,8 +16,29 @@ namespace HookApp.ViewModels
 
         private AppSettingsModel AppSettings { get; }
         
-        public List<String> FolderList { get; set; }
-        public int FolderListSelectedIndex { get; set; }
+        public List<String> FolderList
+        {
+            get
+            {
+                return AppSettings.SkinFolderNameList;
+            }
+            set
+            {
+                AppSettings.SkinFolderNameList = value;
+            }
+        }
+
+        public string SelectedFolderListName
+        {
+            get
+            {
+                return AppSettings.SelectedSkinFolderName;
+            }
+            set
+            {
+                AppSettings.SelectedSkinFolderName = value;
+            }
+        }
 
         public ICommand OKInput { get; private set; }
         public ICommand CancelInput { get; private set; }
@@ -25,28 +48,28 @@ namespace HookApp.ViewModels
             //アプリ設定情報Model
             AppSettings = appSettings;
 
-            //TODO : 初期表示項目の設定
-            //コンボボックスバインド
-            //初期選択処理
-
-            //ボタンアクションの割当
-            //AddCommandAction(CommandActionType.OK_Input, OnOkPressAction);
-            //AddCommandAction(CommandActionType.Cancel_Input, OnCancelPressAction);
-
             //コマンドクラスのインスタンス化
-            OKInput = new MenuCloseButtonInput(this);
-
-            //画面を閉じる
+            OKInput = new OptionOKInputCommand(this);
             CancelInput = new MenuCloseButtonInput(this);
 
         }
 
-        public void OnOkPressAction()
+        /// <summary>
+        /// 現在のビューモデルの状態をモデルに保存します。
+        /// </summary>
+        public void SaveSelection()
         {
-            //選択されたフォルダ名称を設定
-            AppSettings.SelectedSkinFolderName = FolderList[FolderListSelectedIndex];
-
+            SaveFolderSelection();
         }
+
+        /// <summary>
+        /// 現在のフォルダ選択状態をモデルに保存します。
+        /// </summary>
+        public void SaveFolderSelection()
+        {
+            AppSettings.SaveFolderSelection();
+        }
+
 
         ///// <summary>
         ///// キャンセルボタン押下

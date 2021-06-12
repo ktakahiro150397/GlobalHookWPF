@@ -9,7 +9,8 @@ using HookApp.Models;
 using HookApp.Lib;
 using System.Windows.Input;
 using System.Windows.Controls;
-using HookApp.ViewModels.Commands;
+using HookApp.ViewModels.Commands.Common;
+using HookApp.ViewModels.Commands.MainWindow;
 
 namespace HookApp.ViewModels
 {
