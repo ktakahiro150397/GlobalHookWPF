@@ -264,28 +264,20 @@ namespace HookApp.ViewModels
             //入力文字を取得する
             if (this.IsShiftPressed)
             {
-                try
-                {
 
+                if (KeyboardUtilConstants.bigKeyNameDictionary.ContainsKey(e.vkCode))
+                {
                     //シフトが押されている場合、大文字を取得
                     inputChar = KeyboardUtilConstants.bigKeyNameDictionary[e.vkCode];
                 }
-                catch(KeyNotFoundException keyEx)
-                {
-                    //割り当てる文字が存在しない
-                }
-
             }
             else
             {
-                try
+
+                if (KeyboardUtilConstants.bigKeyNameDictionary.ContainsKey(e.vkCode))
                 {
-                    //シフトが押されていない場合、小文字を取得
+                    //シフトが押されている場合、大文字を取得
                     inputChar = KeyboardUtilConstants.smallKeyNameDictionary[e.vkCode];
-                }
-                catch (KeyNotFoundException keyEx)
-                {
-                    //割り当てる文字が存在しない
                 }
             }
 
