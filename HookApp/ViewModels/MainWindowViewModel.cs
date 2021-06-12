@@ -16,7 +16,7 @@ namespace HookApp.ViewModels
     /// <summary>
     /// MainWindowのViewModel
     /// </summary>
-    class MainWindowViewModel : BaseViewModel
+    internal class MainWindowViewModel : BaseViewModel
     {
 
         #region "privateフィールド"
@@ -119,7 +119,7 @@ namespace HookApp.ViewModels
             get
             {
                 //フォーマットして返却する
-                return this.KeyInputStatistics.ElapsedTimeString;
+                return "";
             }
         }
 
@@ -153,6 +153,8 @@ namespace HookApp.ViewModels
             public ICommand ClearInput { get; private set; }
 
             public ICommand OpenOption { get; private set; }
+
+            public ICommand WindowClose { get;private set; }
 
         #endregion
 
@@ -197,8 +199,8 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookAltKeyDown += KeyInputStatistics.KeyDownCount;
             var vm = this;
             _keyInputPropertyChanged = new PropertyChangedProxy<KeyInputStatistics, string>(
-                KeyInputStatistics, 
-                keyStatic => keyStatic.ElapsedTimeString, 
+                KeyInputStatistics,
+                keyStatic => keyStatic.ElapsedTimeString,
                 elapsedTime => vm.OnPropertyChanged(nameof(elapsedTime))
             );
             _keyInputPropertyChangedKeyDownSum = new PropertyChangedProxy<KeyInputStatistics, int>(
@@ -226,12 +228,10 @@ namespace HookApp.ViewModels
             //バージョン情報を取得し、タイトルへ反映する
             this.TitleString = Models.General.GetTitleString();
 
-            //コマンド割当
             ClearInput = new ClearInput_Imp(this);
             OpenOption = new OpenOption(this);
+            WindowClose = new MenuCloseButtonInput(this);
         }
-
-        
 
         /// <summary>
         /// キーアップイベントハンドラ
@@ -429,6 +429,5 @@ namespace HookApp.ViewModels
             }
 
         }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using HookApp.ViewModels;
+﻿using HookApp.Models;
+using HookApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,11 +21,16 @@ namespace HookApp.Views
     {
 
         private OptionViewModel _vm;
-        public Option()
+        public Option(AppSettingsModel optionModel)
         {
             InitializeComponent();
 
-            _vm = new OptionViewModel();
+            //ViewModelのインスタンスを生成し、DataContextに代入
+            if (this._vm == null)
+            {
+                this._vm = new OptionViewModel(optionModel);
+                this.DataContext = _vm;
+            }
         }
     }
 }
