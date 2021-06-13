@@ -11,20 +11,24 @@ namespace HookAppUnitTest.Models
 {
 
     [TestClass]
-    public class SettingFileDeserializerTest
+    public class SettingFileDeserializerTest : TestBase
     {
         /// <summary>
-        /// Resources以下のフォルダ構成が取得できるかどうかテスト
+        /// 正しい形式の設定ファイル読み込みテスト
         /// </summary>
         [TestMethod]
-        public void YAMLDeserializeTest()
+        public void YAMLDeserializeTest_Correct()
         {
 
-            var yamlFilePath = ".\\Resources\\Default\\KeyDisplaySetting.yaml";
-            var baseFilePath = ".\\Resources\\Default";
+            var yamlFilePath = ".\\Resources\\yamlReadTest\\KeyDisplaySetting.yaml";
+            var baseFilePath = ".\\Resources\\yamlReadTest";
 
-            //データ読み込み
-            var infoData = new KeyDisplayInfoData(yamlFilePath);
+            //YAMLデシリアライズ
+            SettingFileDeserializer deserializer = new SettingFileDeserializer(yamlFilePath);
+            List<LoadedPicSettings> infoData = deserializer.YAMLDeserialize<List<LoadedPicSettings>>();
+
+
+            List<IKeyDisplayInfo> infoDataInterface = new List<IKeyDisplayInfo>();
 
             //期待する読み込みデータ
             List<IKeyDisplayInfo> ansData = new List<IKeyDisplayInfo>();
@@ -49,10 +53,20 @@ namespace HookAppUnitTest.Models
 
             
 
-            Assert.IsTrue(infoData.KeyDisplayInfos.SequenceEqual(ansData));
+            Assert.IsTrue(infoDataInterface.SequenceEqual(ansData));
         }
 
+        /// <summary>
+        /// フォーマット違い例外テスト
+        /// </summary>
+        [TestMethod]
+        public void YAMLDeserializeTest_Format_Invalid()
+        {
 
+            var yamlFilePath = ".\\Resources\\yamlFormatInvalid\\KeyDisplaySetting.yaml";
+            Assert.ThrowsException<YamlDotNet.Core.YamlException>(() => { new KeyDisplayInfoData(yamlFilePath); });
+
+        }
 
 
     }

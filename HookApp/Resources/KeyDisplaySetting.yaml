@@ -35,10 +35,10 @@
 
 - KeyName : "F2"
   KeyPic:
-    PicName : "Esc.png"
+    PicName : "NormalKey.png"
     PicWidth: 32
     PicHeight: 16
   KeyPos:
-    PosLeft: 3
-    PosTop : 3
+    PosLeft: 99
+    PosTop : 999
 

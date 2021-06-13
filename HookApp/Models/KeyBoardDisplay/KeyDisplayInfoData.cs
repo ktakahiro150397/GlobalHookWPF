@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using HookApp.Models;
 using YamlDotNet.Serialization;
+using System.Drawing;
 
 namespace HookApp.Models.KeyBoardDisplay
 {
@@ -78,6 +79,82 @@ namespace HookApp.Models.KeyBoardDisplay
             Left = left;
         }
 
+        /// <summary>
+        /// 読み込んだ設定ファイルから、キー位置情報を初期化します。
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="basePath"></param>
+        /// <param name="settings"></param>
+        public SingleKeyDisplayInfoData(string basePath, LoadedPicSettings settings)
+        {
+
+            ActualPicFileData picFileData = GetPicFileData(basePath, settings);
+
+
+            if (!KeyboardUtilConstants.keyNameKeyCodeDictionary.ContainsKey(settings.KeyName))
+            {
+                throw new ApplicationException($"設定ファイル読み込み：KeyName「{settings.KeyName}」は存在しません。");
+            }
+
+            Key = KeyboardUtilConstants.keyNameKeyCodeDictionary[settings.KeyName];
+            PicUri = picFileData.PicUri.LocalPath;
+            Height = picFileData.Height;
+            Width = picFileData.Width;
+            Top = settings.keyPosInfo.PosTop;
+            Left = settings.keyPosInfo.PosLeft;
+        }
+
+        /// <summary>
+        /// 設定ファイルに指定された画像ファイルの情報を取得します。
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <param name="settings"></param>
+        /// <returns></returns>
+        private ActualPicFileData GetPicFileData(string basePath, LoadedPicSettings settings)
+        {
+
+
+            //画像ファイルのパス
+            string PicPath = Path.Combine(Path.GetFullPath(basePath), settings.KeyPicName);
+
+            //ファイルの存在チェック
+            if (!File.Exists(PicPath))
+            {
+                throw new ApplicationException($"設定ファイル読み込み：指定された画像ファイル「{PicPath}」が存在しませんでした。");
+            }
+
+            //画像ファイルのImageオブジェクト取得
+            Image image = Image.FromFile(PicPath);
+            return new ActualPicFileData(image, new Uri(PicPath));
+        }
+
+        private class ActualPicFileData
+        {
+            public Image PicImage { get; private set; }
+            public Uri PicUri { get; private set; }
+
+            public double Width
+            {
+                get
+                {
+                    return PicImage.Width;
+                }
+            }
+            public double Height
+            {
+                get
+                {
+                    return PicImage.Height;
+                }
+            }
+
+            public ActualPicFileData(Image image, Uri picUri)
+            {
+                PicImage = image;
+                PicUri = picUri;
+            }
+        }
+
     }
 
     /// <summary>
@@ -101,13 +178,15 @@ namespace HookApp.Models.KeyBoardDisplay
 
             public KeyPos() { }
 
-            public KeyPos(double posLeft,double posTop)
+            public KeyPos(double posLeft, double posTop)
             {
                 PosLeft = posLeft;
                 PosTop = posTop;
 
             }
         }
+
+
     }
 
 

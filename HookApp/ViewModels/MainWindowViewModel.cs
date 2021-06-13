@@ -270,7 +270,7 @@ namespace HookApp.ViewModels
                 if (KeyboardUtilConstants.bigKeyNameDictionary.ContainsKey(e.vkCode))
                 {
                     //シフトが押されている場合、大文字を取得
-                    inputChar = KeyboardUtilConstants.bigKeyNameDictionary[e.vkCode];
+                    inputChar = KeyboardUtilConstants.bigKeyNameDictionary.GetKeyString(e.vkCode);
                 }
             }
             else
@@ -279,7 +279,7 @@ namespace HookApp.ViewModels
                 if (KeyboardUtilConstants.bigKeyNameDictionary.ContainsKey(e.vkCode))
                 {
                     //シフトが押されている場合、大文字を取得
-                    inputChar = KeyboardUtilConstants.smallKeyNameDictionary[e.vkCode];
+                    inputChar = KeyboardUtilConstants.smallKeyNameDictionary.GetKeyString(e.vkCode);
                 }
             }
 

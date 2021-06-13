@@ -17,10 +17,11 @@
 # http://yaml-online-parser.appspot.com/
 #
 #
+# フォーマット違いテスト用
 
 - KeyName : "Escape"
   KeyPicName: "Esc.png"
-  KeyPos:
+  KeyPosAAAA:
     PosLeft: 3
     PosTop : 3
 
