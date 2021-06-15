@@ -11,6 +11,7 @@ namespace HookApp.Models.KeyBoardDisplay
 
     public class KeyDisplayInfoData
     {
+        private List<LoadedPicSettings> loadedPicSettings { get; set; }
         public List<IKeyDisplayInfo> KeyDisplayInfos { get; }
 
         /// <summary>
@@ -30,16 +31,19 @@ namespace HookApp.Models.KeyBoardDisplay
         {
             //YAMLデシリアライズ
             SettingFileDeserializer deserializer = new SettingFileDeserializer(settingFilePath);
-            List<LoadedPicSettings> data = deserializer.YAMLDeserialize<List<LoadedPicSettings>>();
+            loadedPicSettings = deserializer.YAMLDeserialize<List<LoadedPicSettings>>();
 
             //デシリアライズ結果のバリデーション
+            SettingFileValidator validator = new SettingFileValidator(loadedPicSettings);
+
+
 
             //データのバリデーション
             //キー種類・キー数・
 
             List<IKeyDisplayInfo> ret = new List<IKeyDisplayInfo>();
 
-            foreach (var item in data)
+            foreach (var item in loadedPicSettings)
             {
                 //TODO 読み込んだデータの変換・情報取得
                 //VirtualKeyCode,ファイル名,画像サイズ(w,h)
@@ -54,6 +58,10 @@ namespace HookApp.Models.KeyBoardDisplay
             return ret;
 
         }
+
+
+
+
 
     }
 

@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using HookApp.Models.KeyBoardDisplay;
 using System.IO;
+using Inasync;
 
 namespace HookAppUnitTest.Models
 {
@@ -51,9 +52,8 @@ namespace HookAppUnitTest.Models
                                                    3D,
                                                    3D));
 
-            
 
-            Assert.IsTrue(infoDataInterface.SequenceEqual(ansData));
+            ansData.AssertIs(infoDataInterface);
         }
 
         /// <summary>
