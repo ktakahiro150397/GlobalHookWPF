@@ -3,13 +3,67 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.IO;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace HookApp.Models
 {
-    public class AppSettingsModel
+    public class AppSettingsModel : INotifyPropertyChanged
     {
-        public string SelectedSkinFolderName { get; set; }
+        private string _SelectedSkinFolderName;
+        private string _SelectedSkinFolderNameWhenOpened;
+
+        public string SelectedSkinFolderName {
+            get
+            {
+                return _SelectedSkinFolderName;
+            }
+            set
+            {
+                _SelectedSkinFolderName = value;
+                Setting.Default.SKIN_SELECTED_FOLDER_NAME = SelectedSkinFolderName;
+                Setting.Default.Save();
+
+                //変更をViewModelに通知
+                NotifyPropertyChanged();
+
+            }
+        }
+
         public List<string> SkinFolderNameList { get; set; }
+
+
+        public string SelectedSkinSettingFilePath
+        {
+            get
+            {
+                return Path.GetFullPath(Path.Combine(SelectedFolderPath, Setting.Default.SYSTEM_SKIN_SETTING_FILE_NAME));
+            }
+        }
+
+        public string SelectedSkinBaseKeyboardPicFilePath
+        {
+            get
+            {
+                return Path.GetFullPath(Path.Combine(SelectedFolderPath,KeyboardBasePicName));
+            }
+        }
+
+        public string SelectedFolderPath
+        {
+            get
+            {
+                return Path.GetFullPath(Path.Combine(Setting.Default.SYSTEM_RESOURCE_FOLDER_NAME, SelectedSkinFolderName));
+            }
+        }
+
+        public string KeyboardBasePicName
+        {
+            get
+            {
+                return Setting.Default.SYSTEM_SKIN_KEYBOARD_BASE_FILE_NAME;
+            }
+        }
 
         public AppSettingsModel()
         {
@@ -30,7 +84,18 @@ namespace HookApp.Models
             }
             
             SelectedSkinFolderName = selectedFolderName;
-            
+            _SelectedSkinFolderNameWhenOpened = selectedFolderName;
+
+
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         /// <summary>
@@ -38,8 +103,8 @@ namespace HookApp.Models
         /// </summary>
         public void SaveFolderSelection()
         {
-            Setting.Default.SKIN_SELECTED_FOLDER_NAME = SelectedSkinFolderName;
-        }
+            //SelectedSkinFolderName
 
+        }
     }
 }

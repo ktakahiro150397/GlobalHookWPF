@@ -18,7 +18,7 @@ namespace HookApp.ViewModels.Commands.Option
 
             Window _win = (Window)parameter;
 
-            OptionViewModel vm = (OptionViewModel)base._vm;
+            OptionViewModel vm = (OptionViewModel)_vm;
             vm.SaveSelection();
 
             _win.Close();

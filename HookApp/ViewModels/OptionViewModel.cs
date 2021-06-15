@@ -16,7 +16,7 @@ namespace HookApp.ViewModels
 
         private AppSettingsModel AppSettings { get; }
         
-        public List<String> FolderList
+        public List<string> FolderList
         {
             get
             {
@@ -69,16 +69,5 @@ namespace HookApp.ViewModels
         {
             AppSettings.SaveFolderSelection();
         }
-
-
-        ///// <summary>
-        ///// キャンセルボタン押下
-        ///// </summary>
-        //public void OnCancelPressAction()
-        //{
-        //    //画面を閉じる
-
-        //}
-
     }
 }

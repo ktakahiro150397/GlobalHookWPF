@@ -187,5 +187,26 @@ namespace HookApp {
                 this["TITLE_UPDATE_NONE"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("KeyDisplaySetting.yaml")]
+        public string SYSTEM_SKIN_SETTING_FILE_NAME {
+            get {
+                return ((string)(this["SYSTEM_SKIN_SETTING_FILE_NAME"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Main.png")]
+        public string SYSTEM_SKIN_KEYBOARD_BASE_FILE_NAME {
+            get {
+                return ((string)(this["SYSTEM_SKIN_KEYBOARD_BASE_FILE_NAME"]));
+            }
+            set {
+                this["SYSTEM_SKIN_KEYBOARD_BASE_FILE_NAME"] = value;
+            }
+        }
     }
 }
