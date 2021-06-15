@@ -21,17 +21,17 @@
 - KeyName : "Escape"
   KeyPicName: "Esc.png"
   KeyPos:
-    PosLeft: 3
-    PosTop : 3
+    PosLeft: 1
+    PosTop : 2
 
-- KeyName : "Escape"
+- KeyName : "F1"
   KeyPicName: "Esc.png"
   KeyPos:
     PosLeft: 3
-    PosTop : 3
+    PosTop : 4
 
-- KeyName : "Escape"
+- KeyName : "F2"
   KeyPicName: "Esc.png"
   KeyPos:
-    PosLeft: 3
-    PosTop : 3
+    PosLeft: 5
+    PosTop : 6

@@ -8,7 +8,9 @@ using System.Drawing;
 
 namespace HookApp.Models.KeyBoardDisplay
 {
-
+    /// <summary>
+    /// キー表示画像の情報を持ちます。
+    /// </summary>
     public class KeyDisplayInfoData
     {
         private List<LoadedPicSettings> loadedPicSettings { get; set; }
@@ -27,7 +29,7 @@ namespace HookApp.Models.KeyBoardDisplay
         /// 指定されたYAML設定ファイルから、キーの位置情報を取得します。
         /// </summary>
         /// <returns></returns>
-        public List<IKeyDisplayInfo> LoadKeyDisplayInfos(string settingFilePath)
+        private List<IKeyDisplayInfo> LoadKeyDisplayInfos(string settingFilePath)
         {
             //YAMLデシリアライズ
             SettingFileDeserializer deserializer = new SettingFileDeserializer(settingFilePath);
@@ -35,11 +37,18 @@ namespace HookApp.Models.KeyBoardDisplay
 
             //デシリアライズ結果のバリデーション
             SettingFileValidator validator = new SettingFileValidator(loadedPicSettings);
+            var validatorResult = validator.GetValidationResult();
 
-
-
-            //データのバリデーション
-            //キー種類・キー数・
+            if (!validatorResult.IsAllKeyContain)
+            {
+                //キーが足りない
+                throw new ApplicationException("キーが足りない例外");
+            }
+            if (!validatorResult.IsNoKeyDuplicate)
+            {
+                //キー重複
+                throw new ApplicationException("キーが重複している例外");
+            }
 
             List<IKeyDisplayInfo> ret = new List<IKeyDisplayInfo>();
 
@@ -47,21 +56,12 @@ namespace HookApp.Models.KeyBoardDisplay
             {
                 //TODO 読み込んだデータの変換・情報取得
                 //VirtualKeyCode,ファイル名,画像サイズ(w,h)
-                ret.Add(new SingleKeyDisplayInfoData(KeyboardUtilConstants.VirtualKeyCode.BackSpace,
-                                                    "",
-                                                    0D,
-                                                    0D,
-                                                    item.keyPosInfo.PosLeft,
-                                                    item.keyPosInfo.PosTop));
+                ret.Add(new SingleKeyDisplayInfoData(System.IO.Path.GetDirectoryName(settingFilePath), item));
             }
 
             return ret;
 
         }
-
-
-
-
 
     }
 

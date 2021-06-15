@@ -17,24 +17,6 @@
     <None Remove="Resources\07.png" />
     <None Remove="Resources\08.png" />
     <None Remove="Resources\Caps.png" />
-    <None Remove="Resources\yamlReadTest\Caps.png" />
-    <None Remove="Resources\yamlReadTest\Enter.png" />
-    <None Remove="Resources\yamlReadTest\Esc.png" />
-    <None Remove="Resources\yamlReadTest\LeftShiftSpace.png" />
-    <None Remove="Resources\yamlReadTest\main.png" />
-    <None Remove="Resources\yamlReadTest\NormalKey.png" />
-    <None Remove="Resources\yamlReadTest\RightShift.png" />
-    <None Remove="Resources\yamlReadTest\SystemKey.png" />
-    <None Remove="Resources\yamlReadTest\Tab.png" />
-    <None Remove="Resources\yamlFormatInvalid\Caps.png" />
-    <None Remove="Resources\yamlFormatInvalid\Enter.png" />
-    <None Remove="Resources\yamlFormatInvalid\Esc.png" />
-    <None Remove="Resources\yamlFormatInvalid\LeftShiftSpace.png" />
-    <None Remove="Resources\yamlFormatInvalid\main.png" />
-    <None Remove="Resources\yamlFormatInvalid\NormalKey.png" />
-    <None Remove="Resources\yamlFormatInvalid\RightShift.png" />
-    <None Remove="Resources\yamlFormatInvalid\SystemKey.png" />
-    <None Remove="Resources\yamlFormatInvalid\Tab.png" />
     <None Remove="Resources\Enter.png" />
     <None Remove="Resources\Esc.png" />
     <None Remove="Resources\LeftShiftSpace.png" />
@@ -72,60 +54,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\Caps.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\Caps.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\Enter.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\Esc.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\LeftShiftSpace.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\main.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\NormalKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\RightShift.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\SystemKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlReadTest\Tab.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\Caps.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\Enter.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\Esc.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\LeftShiftSpace.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\main.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\NormalKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\RightShift.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\SystemKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\yamlFormatInvalid\Tab.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Enter.png">
@@ -244,6 +172,42 @@
     <None Update="Resources\Default\Tab.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\yamlFormatInvalid\Caps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\Enter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\Esc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\LeftShiftSpace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\NormalKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\RightShift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\SystemKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlFormatInvalid\Tab.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\Caps.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\Enter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\Esc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\yamlReadTest\KeyDisplaySetting.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -260,6 +224,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Test3\KeyDisplaySetting.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\LeftShiftSpace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\NormalKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\RightShift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\SystemKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\yamlReadTest\Tab.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\新しいテキスト ドキュメント.txt">

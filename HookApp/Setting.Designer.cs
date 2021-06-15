@@ -187,5 +187,14 @@ namespace HookApp {
                 this["TITLE_UPDATE_NONE"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("KeyDisplaySetting.yaml")]
+        public string SYSTEM_SKIN_SETTING_FILE_NAME {
+            get {
+                return ((string)(this["SYSTEM_SKIN_SETTING_FILE_NAME"]));
+            }
+        }
     }
 }

@@ -152,11 +152,11 @@ namespace HookApp.ViewModels
 
         #region "コマンドプロパティ"
 
-            public ICommand ClearInput { get; private set; }
+        public ICommand ClearInput { get; private set; }
 
-            public ICommand OpenOption { get; private set; }
+        public ICommand OpenOption { get; private set; }
 
-            public ICommand WindowClose { get;private set; }
+        public ICommand WindowClose { get; private set; }
 
         #endregion
 
@@ -174,6 +174,11 @@ namespace HookApp.ViewModels
 
         private KeyInputStatistics KeyInputStatistics { get; }
 
+        /// <summary>
+        /// Appの設定情報を持つクラスインスタンス。
+        /// </summary>
+        private AppSettingsModel SettingsModel { get; }
+
         #endregion
 
         /// <summary>
@@ -190,8 +195,11 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookAltKeyUp += this.KeyHookAltKeyUp_Handler;
             this.KeyboardUtil.KeyHookAltKeyDown += this.KeyHookAltKeyDown_Handler;
 
+            //設定ファイル
+            SettingsModel = new AppSettingsModel();
+
             //キーボード入力表示クラスのインスタンスを生成・プロパティの割当
-            this.KeyboardDisplay = new KeyBoardDisplay();
+            KeyboardDisplay = new KeyBoardDisplay(SettingsModel.SelectedSkinSettingFilePath); //設定ファイルのパスを与えて初期化
             KeyDisplayInfoCollection = KeyboardDisplay.KeyDisplayInfoCollection;
 
             //キー入力統計情報
@@ -261,7 +269,7 @@ namespace HookApp.ViewModels
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void KeyHookKeyDown_Handler(object sender, KeyboardUtil.HookKeyEventArgs e)
-        {       
+        {
             string inputChar = null;
             //入力文字を取得する
             if (this.IsShiftPressed)
@@ -290,9 +298,9 @@ namespace HookApp.ViewModels
             }
 
             //このキーコードをプッシュ状態にする
-            
+
             var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
-            if(keyDisp == null)
+            if (keyDisp == null)
             {
                 //キーコードが存在しない場合何もしない
             }
@@ -307,10 +315,10 @@ namespace HookApp.ViewModels
 
                 //Appキー検証不可
 
-                
+
 
                 //このキーのオーバーレイを表示する
-               keyDisp.Visible = Visibility.Visible;
+                keyDisp.Visible = Visibility.Visible;
             }
 
             //テキストに入力を反映する

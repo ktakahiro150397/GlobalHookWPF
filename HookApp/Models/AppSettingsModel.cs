@@ -10,6 +10,13 @@ namespace HookApp.Models
     {
         public string SelectedSkinFolderName { get; set; }
         public List<string> SkinFolderNameList { get; set; }
+        public string SelectedSkinSettingFilePath
+        {
+            get
+            {
+                return Path.GetFullPath(Path.Combine(Setting.Default.SYSTEM_RESOURCE_FOLDER_NAME,SelectedSkinFolderName,Setting.Default.SYSTEM_SKIN_SETTING_FILE_NAME));
+            }
+        }
 
         public AppSettingsModel()
         {
