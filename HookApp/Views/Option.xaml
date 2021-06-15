@@ -29,12 +29,9 @@
                     <StackPanel>
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0px 0px 0px 10px" Text="表示するキーボード画像が格納されているフォルダを選択してください。">
                         </TextBlock>
-                        <ComboBox>
-                            <ComboBoxItem Content="Default" IsSelected="True"></ComboBoxItem>
-                            <ComboBoxItem Content="test2"></ComboBoxItem>
-                            <ComboBoxItem Content="test1"></ComboBoxItem>
-                            <ComboBoxItem Content="test1"></ComboBoxItem>
-                            <ComboBoxItem Content="test1"></ComboBoxItem>
+                        <ComboBox ItemsSource="{Binding FolderList,Mode=OneTime}" 
+                                  SelectedItem="{Binding SelectedFolderListName}"
+                                  >
                         </ComboBox>
                     </StackPanel>
                 </GroupBox>

@@ -11,6 +11,15 @@
     <Setting Name="KEYHISTORY_SPACE_SYMBOL" Type="System.String" Scope="User">
       <Value Profile="(Default)">[ ]</Value>
     </Setting>
+    <Setting Name="SKIN_DEFAULT_FOLDER_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Default</Value>
+    </Setting>
+    <Setting Name="SKIN_SELECTED_FOLDER_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Default</Value>
+    </Setting>
+    <Setting Name="SYSTEM_RESOURCE_FOLDER_NAME" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">./Resources</Value>
+    </Setting>
     <Setting Name="APP_NAME" Type="System.String" Scope="User">
       <Value Profile="(Default)">HookApp</Value>
     </Setting>
@@ -34,6 +43,12 @@
     </Setting>
     <Setting Name="TITLE_UPDATE_NONE" Type="System.String" Scope="User">
       <Value Profile="(Default)">【最新バージョンです】</Value>
+    </Setting>
+    <Setting Name="SYSTEM_SKIN_SETTING_FILE_NAME" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">KeyDisplaySetting.yaml</Value>
+    </Setting>
+    <Setting Name="SYSTEM_SKIN_KEYBOARD_BASE_FILE_NAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Main.png</Value>
     </Setting>
   </Settings>
 </SettingsFile>

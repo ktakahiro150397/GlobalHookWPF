@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:local="clr-namespace:HookApp"
+        xmlns:local="clr-namespace:HookApp" xmlns:viewmodels="clr-namespace:HookApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding TitleString}" Height="450" Width="1000">
     <Grid>
@@ -122,9 +122,10 @@
                    ></TextBlock>-->
 
 
+        <!--Source="../Resources/main.png"-->
         <!--キーボード入力表示部分-->
         <Image x:Name="KeyboardOverAllImage"
-                Source="../Resources/main.png"
+                Source="{Binding SelectedSkinBaseKeyboardPicUriSource}"
                 Grid.Row="2"
                 Grid.Column="2"
                 Canvas.Left="0"

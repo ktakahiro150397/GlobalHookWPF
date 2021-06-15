@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using HookApp.Views;
+using HookApp.Models;
 
-namespace HookApp.ViewModels.Commands
+namespace HookApp.ViewModels.Commands.MainWindow
 {
     /// <summary>
     /// オプション画面を開くコマンドクラス。
@@ -37,8 +38,7 @@ namespace HookApp.ViewModels.Commands
 
         void ICommand.Execute(object parameter)
         {
-
-            var option = new Option(new Models.AppSettingsModel("def"));
+            Views.Option option = new Views.Option(_vm.SettingsModel);
             option.Show();
         }
     }

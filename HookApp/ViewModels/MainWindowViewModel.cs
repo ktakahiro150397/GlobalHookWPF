@@ -9,7 +9,9 @@ using HookApp.Models;
 using HookApp.Lib;
 using System.Windows.Input;
 using System.Windows.Controls;
-using HookApp.ViewModels.Commands;
+using HookApp.ViewModels.Commands.Common;
+using HookApp.ViewModels.Commands.MainWindow;
+using HookApp.Models.KeyBoardDisplay;
 
 namespace HookApp.ViewModels
 {
@@ -35,7 +37,7 @@ namespace HookApp.ViewModels
         private PropertyChangedProxy<Models.KeyInputStatistics, int> _keyInputPropertyChangedKeyDownSum;
         private PropertyChangedProxy<Models.KeyInputStatistics, double> _keyInputPropertyChangedCurrentKPM;
         private PropertyChangedProxy<Models.KeyInputStatistics, double> _keyInputPropertyChangedMaxKPM;
-
+        private PropertyChangedProxy<AppSettingsModel, string> _baseKeyBoardPicChanged;
 
 
         #endregion
@@ -126,6 +128,22 @@ namespace HookApp.ViewModels
 
         public ObservableCollection<KeyBoardDisplay.KeyDisplayInfo> KeyDisplayInfoCollection { get; set; }
 
+        /// <summary>
+        /// キーボードのベース画像URIを取得します。
+        /// </summary>
+        public string SelectedSkinBaseKeyboardPicUriSource
+        {
+            get
+            {
+                return SettingsModel.SelectedSkinBaseKeyboardPicFilePath;
+            }
+            set
+            {
+                OnPropertyChanged(nameof(SelectedSkinBaseKeyboardPicUriSource));
+            }
+           
+        }
+
         #endregion
 
         #region "非通知プロパティ"
@@ -150,11 +168,11 @@ namespace HookApp.ViewModels
 
         #region "コマンドプロパティ"
 
-            public ICommand ClearInput { get; private set; }
+        public ICommand ClearInput { get; private set; }
 
-            public ICommand OpenOption { get; private set; }
+        public ICommand OpenOption { get; private set; }
 
-            public ICommand WindowClose { get;private set; }
+        public ICommand WindowClose { get; private set; }
 
         #endregion
 
@@ -168,9 +186,14 @@ namespace HookApp.ViewModels
         /// <summary>
         /// キーボード表示を行うクラスインスタンス。
         /// </summary>
-        private Models.KeyBoardDisplay KeyboardDisplay { get; }
+        private KeyBoardDisplay KeyboardDisplay { get; }
 
-        private Models.KeyInputStatistics KeyInputStatistics { get; }
+        private KeyInputStatistics KeyInputStatistics { get; }
+
+        /// <summary>
+        /// Appの設定情報を持つクラスインスタンス。
+        /// </summary>
+        public AppSettingsModel SettingsModel { get; }
 
         #endregion
 
@@ -188,8 +211,11 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookAltKeyUp += this.KeyHookAltKeyUp_Handler;
             this.KeyboardUtil.KeyHookAltKeyDown += this.KeyHookAltKeyDown_Handler;
 
+            //設定ファイル
+            SettingsModel = new AppSettingsModel();
+
             //キーボード入力表示クラスのインスタンスを生成・プロパティの割当
-            this.KeyboardDisplay = new KeyBoardDisplay();
+            KeyboardDisplay = new KeyBoardDisplay(SettingsModel.SelectedSkinSettingFilePath); //設定ファイルのパスを与えて初期化
             KeyDisplayInfoCollection = KeyboardDisplay.KeyDisplayInfoCollection;
 
             //キー入力統計情報
@@ -197,7 +223,7 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookKeyDown += KeyInputStatistics.KeyDownCount;
             this.KeyboardUtil.KeyHookShiftKeyDown += KeyInputStatistics.KeyDownCount;
             this.KeyboardUtil.KeyHookAltKeyDown += KeyInputStatistics.KeyDownCount;
-            var vm = this;
+            MainWindowViewModel vm = this;
             _keyInputPropertyChanged = new PropertyChangedProxy<KeyInputStatistics, string>(
                 KeyInputStatistics,
                 keyStatic => keyStatic.ElapsedTimeString,
@@ -218,6 +244,11 @@ namespace HookApp.ViewModels
                keyStatic => keyStatic.MaxKPM,
                MaxKPM => vm.OnPropertyChanged(nameof(MaxKPM))
            );
+            //_baseKeyBoardPicChanged = new PropertyChangedProxy<AppSettingsModel, string>(
+            //    SettingsModel,
+            //    setting => setting.SelectedSkinBaseKeyboardPicFilePath,
+            //    SelectedSkinBaseKeyboardPicFilePath => vm.OnPropertyChanged(nameof(SelectedSkinBaseKeyboardPicFilePath))
+            //);
 
             //最初の入力にセパレータは不要
             this.IsInsertSeparatorSymbol = false;
@@ -231,6 +262,16 @@ namespace HookApp.ViewModels
             ClearInput = new ClearInput_Imp(this);
             OpenOption = new OpenOption(this);
             WindowClose = new MenuCloseButtonInput(this);
+
+
+            SettingsModel.PropertyChanged += SettingsModel_PropertyChanged;
+        }
+
+        private void SettingsModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SelectedSkinBaseKeyboardPicUriSource = SettingsModel.SelectedSkinBaseKeyboardPicFilePath;
+
+
         }
 
         /// <summary>
@@ -259,33 +300,25 @@ namespace HookApp.ViewModels
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void KeyHookKeyDown_Handler(object sender, KeyboardUtil.HookKeyEventArgs e)
-        {       
+        {
             string inputChar = null;
             //入力文字を取得する
             if (this.IsShiftPressed)
             {
-                try
-                {
 
+                if (KeyboardUtilConstants.bigKeyNameDictionary.ContainsKey(e.vkCode))
+                {
                     //シフトが押されている場合、大文字を取得
-                    inputChar = KeyboardUtilConstants.bigKeyNameDictionary[e.vkCode];
+                    inputChar = KeyboardUtilConstants.bigKeyNameDictionary.GetKeyString(e.vkCode);
                 }
-                catch(KeyNotFoundException keyEx)
-                {
-                    //割り当てる文字が存在しない
-                }
-
             }
             else
             {
-                try
+
+                if (KeyboardUtilConstants.bigKeyNameDictionary.ContainsKey(e.vkCode))
                 {
-                    //シフトが押されていない場合、小文字を取得
-                    inputChar = KeyboardUtilConstants.smallKeyNameDictionary[e.vkCode];
-                }
-                catch (KeyNotFoundException keyEx)
-                {
-                    //割り当てる文字が存在しない
+                    //シフトが押されている場合、大文字を取得
+                    inputChar = KeyboardUtilConstants.smallKeyNameDictionary.GetKeyString(e.vkCode);
                 }
             }
 
@@ -296,9 +329,9 @@ namespace HookApp.ViewModels
             }
 
             //このキーコードをプッシュ状態にする
-            
+
             var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
-            if(keyDisp == null)
+            if (keyDisp == null)
             {
                 //キーコードが存在しない場合何もしない
             }
@@ -313,10 +346,10 @@ namespace HookApp.ViewModels
 
                 //Appキー検証不可
 
-                
+
 
                 //このキーのオーバーレイを表示する
-               keyDisp.Visible = Visibility.Visible;
+                keyDisp.Visible = Visibility.Visible;
             }
 
             //テキストに入力を反映する
