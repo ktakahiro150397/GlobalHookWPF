@@ -37,7 +37,7 @@ namespace HookApp.ViewModels
         private PropertyChangedProxy<Models.KeyInputStatistics, int> _keyInputPropertyChangedKeyDownSum;
         private PropertyChangedProxy<Models.KeyInputStatistics, double> _keyInputPropertyChangedCurrentKPM;
         private PropertyChangedProxy<Models.KeyInputStatistics, double> _keyInputPropertyChangedMaxKPM;
-
+        private PropertyChangedProxy<AppSettingsModel, string> _baseKeyBoardPicChanged;
 
 
         #endregion
@@ -131,12 +131,17 @@ namespace HookApp.ViewModels
         /// <summary>
         /// キーボードのベース画像URIを取得します。
         /// </summary>
-        public string SelectedSkinBaseKeyboardPicFilePath
+        public string SelectedSkinBaseKeyboardPicUriSource
         {
             get
             {
                 return SettingsModel.SelectedSkinBaseKeyboardPicFilePath;
             }
+            set
+            {
+                OnPropertyChanged(nameof(SelectedSkinBaseKeyboardPicUriSource));
+            }
+           
         }
 
         #endregion
@@ -188,7 +193,7 @@ namespace HookApp.ViewModels
         /// <summary>
         /// Appの設定情報を持つクラスインスタンス。
         /// </summary>
-        private AppSettingsModel SettingsModel { get; }
+        public AppSettingsModel SettingsModel { get; }
 
         #endregion
 
@@ -218,7 +223,7 @@ namespace HookApp.ViewModels
             this.KeyboardUtil.KeyHookKeyDown += KeyInputStatistics.KeyDownCount;
             this.KeyboardUtil.KeyHookShiftKeyDown += KeyInputStatistics.KeyDownCount;
             this.KeyboardUtil.KeyHookAltKeyDown += KeyInputStatistics.KeyDownCount;
-            var vm = this;
+            MainWindowViewModel vm = this;
             _keyInputPropertyChanged = new PropertyChangedProxy<KeyInputStatistics, string>(
                 KeyInputStatistics,
                 keyStatic => keyStatic.ElapsedTimeString,
@@ -239,6 +244,11 @@ namespace HookApp.ViewModels
                keyStatic => keyStatic.MaxKPM,
                MaxKPM => vm.OnPropertyChanged(nameof(MaxKPM))
            );
+            //_baseKeyBoardPicChanged = new PropertyChangedProxy<AppSettingsModel, string>(
+            //    SettingsModel,
+            //    setting => setting.SelectedSkinBaseKeyboardPicFilePath,
+            //    SelectedSkinBaseKeyboardPicFilePath => vm.OnPropertyChanged(nameof(SelectedSkinBaseKeyboardPicFilePath))
+            //);
 
             //最初の入力にセパレータは不要
             this.IsInsertSeparatorSymbol = false;
@@ -252,6 +262,16 @@ namespace HookApp.ViewModels
             ClearInput = new ClearInput_Imp(this);
             OpenOption = new OpenOption(this);
             WindowClose = new MenuCloseButtonInput(this);
+
+
+            SettingsModel.PropertyChanged += SettingsModel_PropertyChanged;
+        }
+
+        private void SettingsModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SelectedSkinBaseKeyboardPicUriSource = SettingsModel.SelectedSkinBaseKeyboardPicFilePath;
+
+
         }
 
         /// <summary>

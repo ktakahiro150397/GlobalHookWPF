@@ -38,7 +38,7 @@ namespace HookApp.ViewModels.Commands.MainWindow
 
         void ICommand.Execute(object parameter)
         {
-            Views.Option option = new Views.Option(new AppSettingsModel());
+            Views.Option option = new Views.Option(_vm.SettingsModel);
             option.Show();
         }
     }
