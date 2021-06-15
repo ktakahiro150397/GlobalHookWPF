@@ -18,6 +18,30 @@ namespace HookApp.Models
             }
         }
 
+        public string SelectedSkinBaseKeyboardPicFilePath
+        {
+            get
+            {
+                return Path.GetFullPath(Path.Combine(SelectedFolderPath,KeyboardBasePicName));
+            }
+        }
+
+        public string SelectedFolderPath
+        {
+            get
+            {
+                return Path.GetFullPath(Path.Combine(Setting.Default.SYSTEM_RESOURCE_FOLDER_NAME, SelectedSkinFolderName));
+            }
+        }
+
+        public string KeyboardBasePicName
+        {
+            get
+            {
+                return Setting.Default.SYSTEM_SKIN_KEYBOARD_BASE_FILE_NAME;
+            }
+        }
+
         public AppSettingsModel()
         {
             string selectedFolderName;
@@ -46,7 +70,7 @@ namespace HookApp.Models
         public void SaveFolderSelection()
         {
             Setting.Default.SKIN_SELECTED_FOLDER_NAME = SelectedSkinFolderName;
+            Setting.Default.Save();
         }
-
     }
 }

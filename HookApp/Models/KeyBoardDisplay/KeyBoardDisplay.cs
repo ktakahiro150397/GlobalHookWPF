@@ -19,10 +19,10 @@ namespace HookApp.Models.KeyBoardDisplay
     /// <summary>
     /// キーボード表示についてのロジックを持ちます。
     /// </summary>
-    class KeyBoardDisplay 
+    public class KeyBoardDisplay 
     {
         
-
+        public Uri KeyboardBasePicUri { get; set; }
         public ObservableCollection<KeyDisplayInfo> KeyDisplayInfoCollection { get; set; }
 
         /// <summary>

@@ -128,6 +128,17 @@ namespace HookApp.ViewModels
 
         public ObservableCollection<KeyBoardDisplay.KeyDisplayInfo> KeyDisplayInfoCollection { get; set; }
 
+        /// <summary>
+        /// キーボードのベース画像URIを取得します。
+        /// </summary>
+        public string SelectedSkinBaseKeyboardPicFilePath
+        {
+            get
+            {
+                return SettingsModel.SelectedSkinBaseKeyboardPicFilePath;
+            }
+        }
+
         #endregion
 
         #region "非通知プロパティ"
