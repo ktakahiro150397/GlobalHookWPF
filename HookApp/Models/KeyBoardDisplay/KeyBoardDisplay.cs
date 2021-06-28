@@ -29,7 +29,7 @@ namespace HookApp.Models.KeyBoardDisplay
         /// 設定ファイルのファイルパスを指定し、キー表示情報を初期します。
         /// </summary>
         /// <param name="settingFilePath"></param>
-        public KeyBoardDisplay(string settingFilePath)
+        public KeyBoardDisplay(string settingFilePath,double baseKeyboardPicScale)
         {
 
             KeyDisplayInfoCollection = new ObservableCollection<KeyDisplayInfo>();
@@ -38,7 +38,7 @@ namespace HookApp.Models.KeyBoardDisplay
 
             foreach(IKeyDisplayInfo item in data.KeyDisplayInfos)
             {
-                KeyDisplayInfoCollection.Add(new KeyDisplayInfo(item));
+                KeyDisplayInfoCollection.Add(new KeyDisplayInfo(item, baseKeyboardPicScale));
             }
 
         }
@@ -73,6 +73,9 @@ namespace HookApp.Models.KeyBoardDisplay
 
         public class KeyDisplayInfo : INotifyPropertyChanged
         {
+            private double _height;
+            private double _width;
+            private double _keyPicScalecoefficient; 
 
             /// <summary>
             /// プロパティ変更をUI側へ通知するイベント
@@ -82,8 +85,17 @@ namespace HookApp.Models.KeyBoardDisplay
             public KeyboardUtilConstants.VirtualKeyCode Key { get; }
 
             public string PicUri { get; }
-            public double Height { get; }
-            public double Width { get; }
+            public double Height { get
+                {
+                    return _height * _keyPicScalecoefficient;
+                }
+
+            }
+            public double Width { get
+                {
+                    return _width * _keyPicScalecoefficient;
+                }
+            }
             public double Top { get; }
             public double Left { get; }
 
@@ -105,31 +117,19 @@ namespace HookApp.Models.KeyBoardDisplay
                 }
             }
 
-
-            [Obsolete("IKeyDisplayInfoから初期化するようにする")]
-            public KeyDisplayInfo(KeyboardUtilConstants.VirtualKeyCode key, string picUri, double width, double height, double left, double top, Visibility visible)
-            {
-                Key = key;
-                PicUri = picUri;
-                Height = height;
-                Width = width;
-                Top = top;
-                Left = left;
-                _visible = visible;
-            }
-
             /// <summary>
             /// キーの画像情報から、表示情報を初期化します。
             /// </summary>
             /// <param name="initializeData"></param>
-            public KeyDisplayInfo(IKeyDisplayInfo initializeData)
+            public KeyDisplayInfo(IKeyDisplayInfo initializeData,double keyPicScale)
             {
                 Key = initializeData.Key;
                 PicUri = initializeData.PicUri;
-                Height = initializeData.Height;
-                Width = initializeData.Width;
+                _height = initializeData.Height;
+                _width = initializeData.Width;
                 Top = initializeData.Top;
                 Left = initializeData.Left;
+                _keyPicScalecoefficient = keyPicScale;
 
                 //初期状態
                 _visible = Visibility.Hidden;

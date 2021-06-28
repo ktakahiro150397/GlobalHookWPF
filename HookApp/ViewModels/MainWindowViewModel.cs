@@ -215,7 +215,7 @@ namespace HookApp.ViewModels
             SettingsModel = new AppSettingsModel();
 
             //キーボード入力表示クラスのインスタンスを生成・プロパティの割当
-            KeyboardDisplay = new KeyBoardDisplay(SettingsModel.SelectedSkinSettingFilePath); //設定ファイルのパスを与えて初期化
+            KeyboardDisplay = new KeyBoardDisplay(SettingsModel.SelectedSkinSettingFilePath, 1D); //設定ファイルのパスを与えて初期化
             KeyDisplayInfoCollection = KeyboardDisplay.KeyDisplayInfoCollection;
 
             //キー入力統計情報
