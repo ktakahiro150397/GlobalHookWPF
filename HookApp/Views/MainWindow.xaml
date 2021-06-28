@@ -6,7 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:HookApp" xmlns:viewmodels="clr-namespace:HookApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="{Binding TitleString}" Height="450" Width="1000">
+        Title="{Binding TitleString}" Height="720" Width="1500">
     <Grid>
 
         <Grid.RowDefinitions>
