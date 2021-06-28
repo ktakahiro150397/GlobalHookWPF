@@ -22,8 +22,8 @@
 - KeyName: "Escape"
   KeyPicName: "Esc.png"
   KeyPos:
-   PosLeft: 3
-   PosTop : 3
+   PosLeft: 20
+   PosTop : 40
 
 - KeyName: "F1"
   KeyPicName: "Esc.png"

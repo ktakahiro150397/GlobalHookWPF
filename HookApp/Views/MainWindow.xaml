@@ -12,11 +12,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="1.0*"></RowDefinition>
-            <RowDefinition Height="197"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.0*" ></ColumnDefinition>
-            <ColumnDefinition Width="528" ></ColumnDefinition>
+            <ColumnDefinition Width="Auto" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!--画面上部のメニュー-->
@@ -130,8 +130,6 @@
                 Grid.Column="2"
                 Canvas.Left="0"
                 Canvas.Top="0"
-                Height="197"
-                Width="528"
                 Panel.ZIndex="-1"></Image>
 
         <ItemsControl ItemsSource="{Binding KeyDisplayInfoCollection}"
