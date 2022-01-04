@@ -1,0 +1,500 @@
+﻿---
+# HookAppキー画像情報設定ファイル
+# 〇注意点
+# ・それぞれの項目のインデントを崩さないこと(インデントがデータ構造を表しているため)
+# ・コロン":"の後に半角スペースが入力されていること(YAML仕様)
+# ・KeyNameの値を変更しないこと(この名称をキーとしてロードするため)
+#
+# 〇設定方法
+# KeyPicName : 画像の名前。
+#
+# KeyPos項目 : ベース画像に対して、このキー画像を表示する位置情報を入力する。
+#    PosLeft : ベース画像左上を原点とした右方向の座標(px)。
+#    PosTop  : ベース画像左上を原点として下方向の座標(px)。
+#
+# 〇フォーマット確認
+# 入力後、以下URLに張り付けてエラーがなければフォーマットに問題なし
+# http://yaml-online-parser.appspot.com/
+#
+#
+
+#キーボード上部(Esc - F12)
+- KeyName: "Escape"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 25
+   PosTop : 46
+
+- KeyName: "F1"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 73
+   PosTop : 3
+
+- KeyName: "F2"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 108
+   PosTop : 3
+
+- KeyName: "F3"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 143
+   PosTop : 3
+
+- KeyName: "F4"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 178
+   PosTop : 3
+
+- KeyName: "F5"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 230
+   PosTop : 3
+
+- KeyName: "F6"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 265
+   PosTop : 3
+
+- KeyName: "F7"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 300
+   PosTop : 3
+
+- KeyName: "F8"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 335
+   PosTop : 3
+
+- KeyName: "F9"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 388
+   PosTop : 3
+
+- KeyName: "F10"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 423
+   PosTop : 3
+
+- KeyName: "F11"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 458
+   PosTop : 3
+
+- KeyName: "F12"
+  KeyPicName: "Esc.png"
+  KeyPos:
+   PosLeft: 493
+   PosTop : 3
+
+#キーボード2段目(半角/全角 - バックスペース)
+- KeyName: "HalfToFull"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 113
+   PosTop : 332
+
+- KeyName: "One"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 96
+   PosTop : 46
+
+- KeyName: "Two"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 167
+   PosTop : 46
+
+- KeyName: "Three"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 239
+   PosTop : 46
+
+- KeyName: "Four"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 310
+   PosTop : 46
+
+- KeyName: "Five"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 382
+   PosTop : 46
+
+- KeyName: "Six"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 453
+   PosTop : 46
+
+- KeyName: "Seven"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 525
+   PosTop : 46
+
+- KeyName: "Eight"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 596
+   PosTop : 46
+
+- KeyName: "Nine"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 668
+   PosTop : 46
+
+- KeyName: "Zero"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 739
+   PosTop : 46
+
+- KeyName: "Hyphen"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 810
+   PosTop : 46
+
+- KeyName: "Caret"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 882
+   PosTop : 46
+
+- KeyName: "Yen"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 954
+   PosTop : 46
+
+- KeyName: "BackSpace"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 1025
+   PosTop : 46
+
+#キーボード3段目(タブ - "]")
+- KeyName: "Tab"
+  KeyPicName: "Tab.png"
+  KeyPos:
+   PosLeft: 26
+   PosTop : 117
+
+- KeyName: "Q"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 131
+   PosTop : 117
+
+- KeyName: "W"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 202
+   PosTop : 117
+
+- KeyName: "E"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 273
+   PosTop : 117
+
+- KeyName: "R"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 345
+   PosTop : 117
+
+- KeyName: "T"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 417
+   PosTop : 117
+
+- KeyName: "Y"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 488
+   PosTop : 117
+
+- KeyName: "U"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 560
+   PosTop : 117
+
+- KeyName: "I"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 632
+   PosTop : 117
+
+- KeyName: "O"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 703
+   PosTop : 117
+
+- KeyName: "P"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 774
+   PosTop : 117
+
+- KeyName: "AMark"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 846
+   PosTop : 117
+
+- KeyName: "LeftBlacket"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 917
+   PosTop : 117
+
+#キーボード4段目(CapsLock - "]")
+- KeyName: "CapsLock"
+  KeyPicName: "Caps.png"
+  KeyPos:
+   PosLeft: 3
+   PosTop : 92
+
+- KeyName: "A"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 147
+   PosTop : 189
+
+- KeyName: "S"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 218
+   PosTop : 189
+
+- KeyName: "D"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 290
+   PosTop : 189
+
+- KeyName: "F"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 361
+   PosTop : 189
+
+- KeyName: "G"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 433
+   PosTop : 189
+
+- KeyName: "H"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 504
+   PosTop : 189
+
+- KeyName: "J"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 576
+   PosTop : 189
+
+- KeyName: "K"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 647
+   PosTop : 189
+
+- KeyName: "L"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 719
+   PosTop : 189
+
+- KeyName: "SemiColon"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 790
+   PosTop : 189
+
+- KeyName: "Colon"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 862
+   PosTop : 189
+
+- KeyName: "RightBlacket"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 933
+   PosTop : 189
+
+#キーボード5段目(左Shift - 右Shift)
+- KeyName: "LeftShift"
+  KeyPicName: "LShift.png"
+  KeyPos:
+   PosLeft: 27
+   PosTop : 260
+
+- KeyName: "Z"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 168
+   PosTop : 260
+
+- KeyName: "X"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 239
+   PosTop : 260
+
+- KeyName: "C"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 310
+   PosTop : 260
+
+- KeyName: "V"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 381
+   PosTop : 260
+
+- KeyName: "B"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 453
+   PosTop : 260
+
+- KeyName: "N"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 525
+   PosTop : 260
+
+- KeyName: "M"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 596
+   PosTop : 260
+
+- KeyName: "Comma"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 667
+   PosTop : 260
+
+- KeyName: "Period"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 739
+   PosTop : 260
+
+- KeyName: "Slash"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 811
+   PosTop : 260
+
+- KeyName: "YenUnder"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 882
+   PosTop : 260
+
+- KeyName: "RightShift"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 1025
+   PosTop : 260
+
+#キーボード6段目(左Ctrl - 右Ctrl)
+- KeyName: "LeftControl"
+  KeyPicName: "Control.png"
+  KeyPos:
+   PosLeft: 27
+   PosTop : 189
+
+- KeyName: "LeftWin"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 185
+   PosTop : 332
+
+- KeyName: "LeftAlt"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 256
+   PosTop : 332
+
+- KeyName: "Muhenkan"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 328
+   PosTop : 332
+
+- KeyName: "Space"
+  KeyPicName: "Space.png"
+  KeyPos:
+   PosLeft: 403
+   PosTop : 332
+
+- KeyName: "Henkan"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 580
+   PosTop : 332
+
+- KeyName: "HiraganaKatakana"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 652
+   PosTop : 332
+
+- KeyName: "RightAlt"
+  KeyPicName: "NormalKey.png"
+  KeyPos:
+   PosLeft: 722
+   PosTop : 332
+
+- KeyName: "RightWin"
+  KeyPicName: "SystemKey.png"
+  KeyPos:
+   PosLeft: 396
+   PosTop : 162
+
+- KeyName: "AppKey"
+  KeyPicName: "SystemKey.png"
+  KeyPos:
+   PosLeft: 440
+   PosTop : 162
+
+- KeyName: "RightControl"
+  KeyPicName: "SystemKey.png"
+  KeyPos:
+   PosLeft: 484
+   PosTop : 162
+
+#Enterキー
+- KeyName: "Return"
+  KeyPicName: "Enter.png"
+  KeyPos:
+   PosLeft: 991
+   PosTop : 119
