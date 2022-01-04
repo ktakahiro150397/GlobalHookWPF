@@ -160,6 +160,11 @@ namespace HookApp.ViewModels
         private bool IsShiftPressed { get; set; }
 
         /// <summary>
+        /// Ctrlキーが現在押下されているかどうかを表します。
+        /// </summary>
+        private bool IsCtrlPressed { get; set; }
+
+        /// <summary>
         /// キー入力取得時、この文字にセパレータを挿入するかどうかのフラグ。
         /// </summary>
         public bool IsInsertSeparatorSymbol;
@@ -281,6 +286,12 @@ namespace HookApp.ViewModels
         /// <param name="e"></param>
         private void KeyHookKeyUp_Handler(object sender, KeyboardUtil.HookKeyEventArgs e)
         {
+            //Ctrlキーの押下チェック
+            if (e.vkCode == KeyboardUtilConstants.VirtualKeyCode.LeftControl)
+            {
+                IsCtrlPressed = false;
+            }
+
             //このキーコードをアンプッシュ状態にする
             var keyDisp = KeyboardDisplay.KeyDisplayInfoCollection.Where(info => info.Key == e.vkCode).FirstOrDefault();
             if (keyDisp == null)
@@ -301,6 +312,12 @@ namespace HookApp.ViewModels
         /// <param name="e"></param>
         private void KeyHookKeyDown_Handler(object sender, KeyboardUtil.HookKeyEventArgs e)
         {
+            //Ctrlキーの押下チェック
+            if(e.vkCode == KeyboardUtilConstants.VirtualKeyCode.LeftControl && !IsShiftPressed)
+            {
+                IsCtrlPressed = true;
+            }
+
             string inputChar = null;
             //入力文字を取得する
             if (this.IsShiftPressed)
@@ -389,6 +406,16 @@ namespace HookApp.ViewModels
                     }
                     break;
             }
+
+
+            //クリアショートカットのチェック
+            if (e.vkCode == KeyboardUtilConstants.VirtualKeyCode.Escape)
+            {
+                //入力クリア
+                inputHistory = "";
+                return;
+            }
+
         }
 
         /// <summary>
