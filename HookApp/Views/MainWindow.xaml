@@ -111,6 +111,9 @@
                    Text="{Binding ElapsedTime}"
                    ></TextBlock>
 
+            <Button Grid.Row="4" Content="クリア" Command="{Binding ClearInput}">
+            </Button>
+
         </Grid>
 
 
